@@ -1,0 +1,27 @@
+.surf {
+    padding: 160px 0px 210px;
+    background-image: url(../img/surf/surf-location.svg);
+    background-position: right 200px;
+    background-repeat: no-repeat;
+    background-size: auto;
+
+    &-location {
+        text-align: right;
+        padding-right: 80px;
+        transform: translateY(-100%);
+
+        &__subtitle {
+
+        }
+
+        &__title {
+            font-weight: 800;
+            font-size: 40px;
+            padding-right: 10px;
+
+            span {
+                font-weight: 100;
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 .surf {
-    padding: 160px 0px 210px;
+    padding: 160px 0px 120px;
     background-image: url(../img/surf/surf-location.svg);
     background-position: right 200px;
     background-repeat: no-repeat;
@@ -10,10 +10,6 @@
         padding-right: 80px;
         transform: translateY(-100%);
 
-        &__subtitle {
-
-        }
-
         &__title {
             font-weight: 800;
             font-size: 40px;
@@ -21,6 +17,83 @@
 
             span {
                 font-weight: 100;
+            }
+        }
+    }
+
+    &-map {
+        max-width: 1200px;
+        min-height: 635px;
+        background-image: url(../img/surf/map/map-bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin: 0 auto;
+
+        .slick-list {
+            min-height: 635px;
+        }
+
+        .mapinfo {
+            position: relative;
+
+            &--1 {
+                top: 335px;
+                left: 0;
+            }
+            &--2 {
+                top: 270px;
+                left: 0;
+                
+                .mapinfo-placemark {
+                    position: relative;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        background-image: url(../img/surf/map/map-placemark.svg);
+                        width: 14px;
+                        height: 17px;
+                        background-size: cover;
+                        right: -20px;
+                        top: -25px
+                    }
+                }
+            }
+            &--3 {
+                top: 330px;
+                left: 25px;
+            }
+            &--4 {
+                top: 470px;
+                left: -25px;
+            }
+            &--5 {
+                top: 230px;
+                left: -65px;
+            }
+            &--6 {
+                top: 550px;
+                left: -120px;
+            }
+            &--7 {
+                top: 375px;
+                left: -95px;
+            }
+            &--8 {
+                top: 470px;
+                left: 35px;
+            }
+
+            &-placemark {
+                background-color: $green;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+            }
+
+            &-content {
+                display: none;
             }
         }
     }

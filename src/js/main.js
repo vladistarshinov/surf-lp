@@ -14,4 +14,12 @@ $(function(){
         asNavFor: '.header__slider'
     });
 
+    $('.surf-map').slick({
+        slidesToShow: 8,
+        slidesToScroll: 1,
+        arrows: false,
+        focusOnSelect: true,
+        // asNavFor: '.surf-slider'
+    });
+
 });

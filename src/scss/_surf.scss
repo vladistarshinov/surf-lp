@@ -21,6 +21,8 @@
         }
     }
 
+    /* Map + content */
+
     &-map {
         max-width: 1200px;
         min-height: 635px;
@@ -221,6 +223,8 @@
         }
     }
 
+    /* Slider */
+
     &-slider {
         padding-top: 109px;
 
@@ -317,41 +321,6 @@
                 bottom: 0;
                 display: none;
             }
-        }
-    }
-}
-
-.btn {
-    font-size: 33px;
-    font-weight: 800;
-    line-height: 36px;
-
-    span {
-        padding: 17px 47px 15px 17px;
-        background-color: $green;
-        display: inline-flex;
-        margin-left: 19px;
-        position: relative;
-
-        &::before {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 1px;
-            background-color: #fff;
-            top: 50%;
-            left: -10px;
-        }
-
-        &::after {
-            content: "";
-            position: absolute; 
-            width: 25px;
-            height: 21px;
-            background-image: url(../img/header/pagination/arrow-right.svg);
-            top: 50%;
-            right: 12px;
-            transform: translateY(-40%);
         }
     }
 }

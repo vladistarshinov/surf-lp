@@ -4,6 +4,11 @@
     background-position: bottom right;
     background-repeat: no-repeat;
 
+    .slider-arrows {
+        top: 225px;
+        opacity: .5;
+    }
+
     &-slider { 
         &__img {
             background-repeat: no-repeat;
@@ -24,9 +29,17 @@
             background-position: right center;
             transform: translateY(-250px);
 
-            img {
-                padding-left: 24px;
+            .info-title__description {
+                position: relative;
+                padding-right: 78px;
+
+                img {
+                    position: absolute;              
+                    right: 0;
+                    top: 0;
+                }
             }
+
         }
 
         &__info {

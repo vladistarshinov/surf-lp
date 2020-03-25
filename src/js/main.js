@@ -30,7 +30,7 @@ $(function(){
         asNavFor: '.surf-map'
     });
 
-    $('.travel-slider').slick({
+    $('.content-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         prevArrow: '<img class="slider-arrows slider-arrows__left" src="img/header/pagination/arrow-left.svg" alt=""></img>',

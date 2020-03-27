@@ -74,10 +74,18 @@ $(function(){
     let sum = $('.nights').val() * $('.sum').data('nights') + ($('.guests').val() - 1) * $('.sum').data('guests');
     $('.sum').html('$' + sum);
 
-    $('.quantity-button').on('click', () => {
-        let sum = $('.nights').val() * $('.sum').data('nights') + ($('.guests').val() - 1) * $('.sum').data('guests');
-        $('.sum').html('$' + sum);
+    $('.quantity-button').on('click', function(){
+        var parents = $(this).parents('.content-slider__info');
+        let sum = $('.nights', parents).val() * $('.sum', parents).data('nights') + ($('.guests', parents).val() - 1) * $('.sum', parents).data('guests');
+        $('.sum', parents).html('$' + sum);
     });
+
+    $('.quantity').each(function(){
+        var parents = $(this).parents('.content-slider__info');
+        let sum = $('.nights', parents).val() * $('.sum', parents).data('nights') + ($('.guests', parents).val() - 1) * $('.sum', parents).data('guests');
+        $('.sum', parents).html('$' + sum);
+        
+        }); 
 
 
 });

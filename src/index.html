@@ -807,7 +807,7 @@
 
             <div class="content-slider__inform">
               <div class="content-slider__inform-subtitle"> pricing</div>
-              <div class="content-slider__inform-title">$1,976 usd <span>round trip</span></div>
+              <div class="content-slider__inform-title">$1,976 usd <small>round trip</small></div>
             </div>
             <!-- /.content-slider__inform -->
 
@@ -868,7 +868,7 @@
 
             <div class="content-slider__inform">
               <div class="content-slider__inform-subtitle"> pricing</div>
-              <div class="content-slider__inform-title">$1,976 usd <span>round trip</span></div>
+              <div class="content-slider__inform-title">$1,976 usd <small>round trip</small></div>
             </div>
             <!-- /.content-slider__inform -->
 
@@ -929,7 +929,7 @@
 
             <div class="content-slider__inform">
               <div class="content-slider__inform-subtitle"> pricing</div>
-              <div class="content-slider__inform-title">$1,976 usd <span>round trip</span></div>
+              <div class="content-slider__inform-title">$1,976 usd <small>round trip</small></div>
             </div>
             <!-- /.content-slider__inform -->
 
@@ -990,7 +990,7 @@
 
             <div class="content-slider__inform">
               <div class="content-slider__inform-subtitle"> pricing</div>
-              <div class="content-slider__inform-title">$1,976 usd <span>round trip</span></div>
+              <div class="content-slider__inform-title">$1,976 usd <small>round trip</small></div>
             </div>
             <!-- /.content-slider__inform -->
 
@@ -1051,7 +1051,7 @@
 
             <div class="content-slider__inform">
               <div class="content-slider__inform-subtitle"> pricing</div>
-              <div class="content-slider__inform-title">$1,976 usd <span>round trip</span></div>
+              <div class="content-slider__inform-title">$1,976 usd <small>round trip</small></div>
             </div>
             <!-- /.content-slider__inform -->
 
@@ -1112,7 +1112,7 @@
 
             <div class="content-slider__inform">
               <div class="content-slider__inform-subtitle"> pricing</div>
-              <div class="content-slider__inform-title">$1,976 usd <span>round trip</span></div>
+              <div class="content-slider__inform-title">$1,976 usd <small>round trip</small></div>
             </div>
             <!-- /.content-slider__inform -->
 
@@ -1173,7 +1173,7 @@
 
             <div class="content-slider__inform">
               <div class="content-slider__inform-subtitle"> pricing</div>
-              <div class="content-slider__inform-title">$1,976 usd <span>round trip</span></div>
+              <div class="content-slider__inform-title">$1,976 usd <small>round trip</small></div>
             </div>
             <!-- /.content-slider__inform -->
 
@@ -1234,7 +1234,7 @@
 
             <div class="content-slider__inform">
               <div class="content-slider__inform-subtitle"> pricing</div>
-              <div class="content-slider__inform-title">$1,976 usd <span>round trip</span></div>
+              <div class="content-slider__inform-title">$1,976 usd <small>round trip</small></div>
             </div>
             <!-- /.content-slider__inform -->
 
@@ -1284,10 +1284,18 @@
         </div>
         <!-- /.content-slider__img -->
 
-        <div class="content-slider__maintitle" style="">
+        <div class="content-slider__maintitle" style="background-image: url(img/sleep/slider/bed-slide-1.png);">
           <div class="info-title">
             <div class="subtitle-line_right">rating</div>
-            <div class="info-title__description">excellent <img src="" alt=""></div>
+            <div class="info-title__description">excellent 
+              <ul class="content__star-list star-list">
+                <li><img src="img/sleep/slider/star.svg" alt=""></li> 
+                <li><img src="img/sleep/slider/star.svg" alt=""></li> 
+                <li><img src="img/sleep/slider/star.svg" alt=""></li> 
+                <li><img src="img/sleep/slider/star.svg" alt=""></li> 
+                <li><img src="img/sleep/slider/star.svg" alt=""></li> 
+              </ul>
+            </div>
           </div>
           <!-- /.info-title -->
         </div>
@@ -1303,19 +1311,35 @@
 
           <div class="content-slider__inform">
             <div class="content-slider__inform-subtitle"># of nights</div>
-            <div class="content-slider__inform-title">5 nights</div>
+            <div class="content-slider__inform-title">
+              <div class="quantity">
+                <input class="nights" type="number" min="1" max="50" step="1" value="5">
+              </div> 
+               <!-- /.quantity -->
+              <span class="quantity_edit">nights</span>
+            </div>
           </div>
           <!-- /.content-slider__inform -->
 
           <div class="content-slider__inform">
             <div class="content-slider__inform-subtitle"># of guests</div>
-            <div class="content-slider__inform-title">4 guests</div>
+            <div class="content-slider__inform-title">
+              <div class="quantity">
+                <input class="guests" type="number" min="1" max="50" step="1" value="4">
+              </div> 
+              <!-- /.quantity -->
+              <span class="quantity_edit">guests</span>
+            </div>
           </div>
           <!-- /.content-slider__inform -->
 
           <div class="content-slider__inform">
             <div class="content-slider__inform-subtitle"> pricing</div>
-            <div class="content-slider__inform-title">$349 usd <span>per night</span></div>
+            <div class="content-slider__inform-title">
+              <span class="sum" data-nights="55" data-guests="25"></span>
+               usd
+              <small>per night</small>
+            </div>
           </div>
           <!-- /.content-slider__inform -->
 

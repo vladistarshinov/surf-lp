@@ -1,3 +1,100 @@
 .sleep {
     background-image: url(../img/sleep/flower-bg.png);
 }
+
+.sleep .content {
+    &-slider {
+        &__maintitle {
+            .info-title__description {
+                padding-right: 215px;
+
+                .content__star-list {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+
+                 //  li => interface.scss
+
+                    img {
+                        position: static;
+                    }
+                }
+            }
+        }
+     }
+}
+
+
+.sleep .content {
+    &-slider{
+        &__info {
+            &rm {
+                &-title {
+                    .quantity {
+                        display: inline-flex;
+
+                        &_edit {
+                            letter-spacing: 6px;
+                        }
+                      }
+                      
+                      input[type=number]::-webkit-inner-spin-button,
+                      input[type=number]::-webkit-outer-spin-button
+                      {
+                        -webkit-appearance: none;
+                        margin: 0;
+                      }
+                      
+                      input[type=number]
+                      {
+                        -moz-appearance: textfield;
+                      }
+                      
+                      .quantity input {
+                        width: 45px;
+                        height: 42px;
+                        float: left;
+                        display: flex;
+                        border: none;
+                        background-color: transparent;
+                        font-size: 40px;
+                        line-height: 36px;
+                        font-weight: 800;
+                        color: #fff;
+                      }
+                      
+                      .quantity input:focus {
+                        outline: 0;
+                      }
+                      
+                      .quantity-nav {
+                        float: left;
+                        position: static;
+                        height: 42px;
+                      }
+                      
+                      .quantity-button {
+                        position: relative;
+                        cursor: pointer;
+                        width: 20px;
+                        height: 20px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        top: 50px;
+                      }
+                      
+                      .quantity-button.quantity-up {
+                        position: absolute;
+                        right: 0px;
+                      }
+                      
+                      .quantity-button.quantity-down {
+                        position: absolute;
+                        right: 25px;
+                      }
+                }
+            }
+        }
+    }
+}

@@ -188,3 +188,10 @@ li {
         }
     }
 }
+
+.star-list {
+    li {
+        display: inline-flex;
+        margin-left: -25px;
+    }
+}

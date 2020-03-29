@@ -5,6 +5,10 @@
 
     &-slider {
         padding-left: 132px;
+
+        .slider-arrows {
+            opacity: .25;
+        }
         
         &__info {
             display: flex;
@@ -53,6 +57,116 @@
             padding-left: 65px;
             display: flex;
             align-items: flex-end;
+
+            .surfboard {
+                position: relative;
+
+                .surf-box {
+                    &--1 {
+                        top: 215px;
+                        right: 40px;
+                    }
+
+                    &--2 {
+                        top: 312px;
+                        left: -5px;
+                    }
+
+                    &--3 {
+                        left: 52px;
+                        bottom: 70px;
+
+                        .surfboard-info__content {
+                            padding-left: 0;
+                            padding-right: 104px;
+                            transform: translate(-400px, -35px);
+                            position: absolute;
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                width: 80px;
+                                height: 1px;
+                                background-color: #fff;
+                                right: 0;
+                                left: auto;
+                                top: 50%;
+                            }
+                        }
+                    }
+                }
+
+                &-info {
+                    position: absolute;
+
+                    &__dots {
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        position: relative;
+                        background-color: #fff;
+                        cursor: pointer;
+
+                        &.active {
+                            .dot-2 {
+                                background-color: $green;
+                                position: absolute;
+                                width: 12px;
+                                height: 2px;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%) rotate(0deg);
+                            }
+
+                            & + .surfboard-info__content {
+                                display: flex;
+                            }
+                        }
+                        
+                        .dot-1 {
+                            background-color: $green;
+                            position: absolute;
+                            width: 12px;
+                            height: 2px;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%) rotate(0deg);
+                        }
+
+                        .dot-2 {
+                            background-color: $green;
+                            position: absolute;
+                            width: 12px;
+                            height: 2px;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%) rotate(90deg);
+                        }
+                        
+                    }
+
+                    &__content {
+                        display: none;
+                        position: absolute;
+                        width: 359px;
+                        font-size: 24px;
+                        font-weight: 800;
+                        line-height: 24px;
+                        padding-left: 104px;
+                        transform: translate(40px, -35px);
+                        
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: 80px;
+                            height: 1px;
+                            background-color: #fff;
+                            left: 0;
+                            top: 50%;
+                        }
+                    }
+                }
+            }
 
             .extras {
                 padding-left: 150px;

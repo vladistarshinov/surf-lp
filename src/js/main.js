@@ -30,7 +30,7 @@ $(function(){
         asNavFor: '.surf-map'
     });
 
-    $('.content-slider').slick({
+    $('.content-slider, .shop-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         prevArrow: '<img class="slider-arrows slider-arrows__left" src="img/header/pagination/arrow-left.svg" alt=""></img>',
@@ -84,8 +84,11 @@ $(function(){
         var parents = $(this).parents('.content-slider__info');
         let sum = $('.nights', parents).val() * $('.sum', parents).data('nights') + ($('.guests', parents).val() - 1) * $('.sum', parents).data('guests');
         $('.sum', parents).html('$' + sum);
-        
-        }); 
+    }); 
+
+    $('.surfboard-info__dots').on('click', function() {
+      $(this).toggleClass('active');
+    });
 
 
 });

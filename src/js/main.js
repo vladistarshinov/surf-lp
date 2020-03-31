@@ -91,4 +91,10 @@ $(function(){
     });
 
 
+    $('.menu__btn').on('click', function(){
+      $('.menu__btn').toggleClass('active');
+      $('.aside__nav').toggleClass('active');
+    });
+
+
 });

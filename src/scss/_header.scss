@@ -131,8 +131,8 @@
 
 .path-animation-1 {
     animation: path-anim-1 10s infinite 6s;
-    stroke-dashoffset: 850;
-    stroke-dasharray: 850;
+    stroke-dashoffset: $large_path;
+    stroke-dasharray: $large_path;
 }
 
 @keyframes path-anim-1 {
@@ -143,8 +143,8 @@
 
 .path-animation-2 {
     animation: path-anim-2 10s infinite 6s;
-    stroke-dashoffset: 850;
-    stroke-dasharray: 850;
+    stroke-dashoffset: $large_path;
+    stroke-dasharray: $large_path;
 }
 
 @keyframes path-anim-2 {
@@ -155,8 +155,8 @@
 
 .path-animation-3 {
     animation: path-anim-3 10s infinite 6s;
-    stroke-dashoffset: 600;
-    stroke-dasharray: 600;
+    stroke-dashoffset: $medium_path;
+    stroke-dasharray: $medium_path;
 }
 
 @keyframes path-anim-3 {
@@ -167,8 +167,8 @@
 
 .path-animation-4 {
     animation: path-anim-4 10s infinite 6s;
-    stroke-dashoffset: 600;
-    stroke-dasharray: 600;
+    stroke-dashoffset: $medium_path;
+    stroke-dasharray: $medium_path;
 }
 
 @keyframes path-anim-4 {

@@ -81,11 +81,18 @@
    .header__anchor {
        left: 20px;
        bottom: 30px;
+       transform: translateX(150px);
    }
 }
 
 @media (max-width: 1279px) {
     
+    .header__anchor {
+        left: 20px;
+        bottom: 30px;
+        transform: translateX(0);
+    }
+
     .header {
         &__map {
             svg {
@@ -185,7 +192,9 @@
                 height: 300px;
             }
         }
+        
     }
+    
 }
 
 

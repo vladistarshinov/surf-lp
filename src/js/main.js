@@ -11,7 +11,13 @@ $(function(){
     $('.slider-pagination').slick({
         slidesToShow: 4,
         slidesToScroll: 4,
-        asNavFor: '.header__slider'
+        asNavFor: '.header__slider',
+        responsive: [
+          {
+            breakpoint: 561,
+            settings: "unslick"
+          },
+        ]
     });
 
     $('.surf-map').slick({
@@ -19,7 +25,48 @@ $(function(){
         slidesToScroll: 1,
         arrows: false,
         focusOnSelect: true,
-        asNavFor: '.surf-slider'
+        asNavFor: '.surf-slider',
+        responsive: [
+          {
+            breakpoint: 1101,
+            settings: {
+              slidesToShow: 3,
+              centerMode: true,
+            }
+          },
+
+          {
+            breakpoint: 951,
+            settings: {
+              slidesToShow: 1.5,
+              centerMode: true,
+            }
+          },
+
+          {
+            breakpoint: 601,
+            settings: {
+              slidesToShow: 0.85,
+              centerMode: true,
+            }
+          },
+
+          {
+            breakpoint: 401,
+            settings: {
+              slidesToShow: 1,
+              centerMode: false,
+            }
+          },
+
+          {
+            breakpoint: 361,
+            settings: {
+              slidesToShow: 1,
+            }
+          },
+
+        ]
     });
 
     $('.surf-slider').slick({
@@ -27,7 +74,41 @@ $(function(){
         slidesToScroll: 1,
         prevArrow: '<img class="slider-arrows slider-arrows__left" src="img/header/pagination/arrow-left.svg" alt=""></img>',
         nextArrow: '<img class="slider-arrows slider-arrows__right" src="img/header/pagination/arrow-right.svg" alt=""></img>',
-        asNavFor: '.surf-map'
+        asNavFor: '.surf-map', 
+        responsive: [
+          {
+            breakpoint: 1250,
+            settings: {
+              slidesToShow: 3,
+              centerMode: true,
+            }
+          },
+
+          {
+            breakpoint: 901,
+            settings: {
+              slidesToShow: 1.625,
+              centerMode: true,
+            }
+          },
+
+          {
+            breakpoint: 601,
+            settings: {
+              slidesToShow: 1,
+              centerMode: true,
+            }
+          },
+
+          {
+            breakpoint: 401,
+            settings: {
+              slidesToShow: 1,
+              centerMode: false,
+            }
+          },
+
+        ]
     });
 
     $('.content-slider, .shop-slider').slick({
@@ -37,6 +118,10 @@ $(function(){
         nextArrow: '<img class="slider-arrows slider-arrows__right" src="img/header/pagination/arrow-right.svg" alt=""></img>',
     });
 
+
+
+
+    
     $('<div class="quantity-nav"><div class="quantity-button quantity-up"><img src="img/sleep/slider/plus.svg" alt=""></div><div class="quantity-button quantity-down"><img src="img/sleep/slider/minus.svg" alt=""></div></div>').insertAfter('.quantity input');
     $('.quantity').each(function() {
       var spinner = $(this),
@@ -71,6 +156,9 @@ $(function(){
     });
 
 
+
+
+
     let sum = $('.nights').val() * $('.sum').data('nights') + ($('.guests').val() - 1) * $('.sum').data('guests');
     $('.sum').html('$' + sum);
 
@@ -90,6 +178,9 @@ $(function(){
       $(this).toggleClass('active');
     });
 
+
+
+    
 
     $('.menu__btn').on('click', function(){
       $('.menu__btn').toggleClass('active');

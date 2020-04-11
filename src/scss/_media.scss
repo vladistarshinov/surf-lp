@@ -525,6 +525,11 @@
 }
 
 @media (max-width: 1100px) {
+
+    .surf, .content {
+        padding: 70px 0px 50px;
+    }
+
     .surf {
         &-map {
             background-image: none;
@@ -590,11 +595,11 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 840px) {
     .block-name {
         span {
             font-size: 150px;
-            padding-bottom: 80px;
+            padding-bottom: 60px;
         }
     }
 }
@@ -605,10 +610,6 @@
             font-size: 125px;
             padding-bottom: 40px;
         }
-    }
-
-    .surf {
-        padding: 70px 0px 50px;
     }
 
     .surf-location {
@@ -624,6 +625,18 @@
 }
 
 @media (max-width: 400px) {
+
+    .block-name {
+        span {
+            h3 {
+                font-size: 50px;
+            }
+
+            span {
+                font-size: 90px;
+            }   
+        }
+    }
 
     .surf-slider__item-title {
         font-size: 30px;
@@ -650,3 +663,250 @@
     }
 }
 
+///////////////////////////////////////  Media TRAVEL/SLEEP ////////////////////////////////////////////////
+
+@media (max-width: 1150px) {
+    .content {
+        &-slider { 
+            &__maintitle {
+                padding: 160px 0 0 20px;
+            }
+        }
+    }
+ }
+
+ @media (max-width: 1050px) {
+
+    .info-title {
+        transform: translateY(90px);
+    }
+
+    .content {
+        &-slider {
+
+            &__maintitle {
+                background-position: right -10px;
+            } 
+
+            &__info {
+                flex-wrap: wrap;
+
+                &rm { 
+                    flex-grow: 1;
+                    width: 47%;
+                    justify-content: space-around;
+                    display: flex;
+
+                    &-subtitle {
+                        margin-left: 5%;
+                    }
+
+                    &-title {
+                        small {
+                            position: absolute;
+                        }
+                        .quantity {
+                            .quantity-nav {
+                                position: relative;
+
+                                .quantity-button {
+                                    top: 70px;
+                                }
+
+                                .quantity-button.quantity-up {
+                                    right: -180px;
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    } 
+}
+
+@media (max-width: 840px) {
+    .travel.content {
+        .block-name {
+            span {  
+                padding-bottom: 0px;
+            }
+        }
+    }
+}
+
+@media (max-width: 720px) {
+    .content-slider__img {
+        min-height: 740px;
+    }
+
+    .content-slider__headtitle {
+        padding-top: 100px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 590px) {
+
+    .info-subtitle__description {
+        font-size: 26px;
+    }
+    
+
+    .info-title {
+
+        .subtitle-line_right {
+            font-size: 20px;
+        }
+
+        &__description {
+            font-size: 35px;
+        }
+    }
+
+
+    .content {
+        &-slider {
+            &__info {
+                &rm { 
+                    width: 100%;
+                    min-height: auto;
+                    margin-bottom: 30px;
+                    padding-left: 15%;
+                    display: block;
+
+                    &-subtitle {
+                        position: static;
+                        transform: rotate(0deg);
+                        height: auto;
+                        width: auto;
+                        text-align: left;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                    }
+
+                    &-title {
+                        padding-left: 0;
+                        font-size: 30px;
+
+                        .quantity {
+                            .quantity-nav {
+                                position: absolute;
+            
+                                .quantity-button {
+                                    top: 10px;
+                                }
+                                
+                                .quantity-button.quantity-up {
+                                    right: -230px;
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }  
+        }
+    } 
+}
+
+@media (max-width: 500px) {
+    .surf, .travel.content, .sleep.content, .shop {
+        .block-name {
+            span {  
+                padding-left: 10px;
+
+                h3 {
+                    font-size: 80px;
+                }
+
+                span {
+                    font-size: 100px;
+                    
+                }   
+            }
+        }
+    }
+}
+
+@media (max-width: 380px) {
+    .sleep .content {
+        &-slider {
+            &__maintitle {
+                .info-title__description {
+    
+                    .content__star-list {
+                        position: absolute;
+                        top: 30px;
+                        right: 120px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 410px) {
+    .travel {
+       background-image: none;
+    } 
+
+    .info-subtitle {
+        .subtitle-line_left {
+            font-size: 16px;
+        }
+
+        &__description {
+            font-size: 20px;
+        }
+    }
+
+    .info-title {
+        .subtitle-line_right {
+            font-size: 18px;
+        }
+
+        &__description {
+            font-size: 28px;
+        }
+    }
+
+    .content-slider__inform {
+        text-align: center;
+        padding-left: 0;
+
+        &-subtitle {
+            font-size: 16px;
+            text-align: center;
+        }
+
+        &-title {
+            font-size: 28px;
+            small {
+                position: relative;
+                display: flex;
+                justify-content: center;
+            }
+
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .surf, .travel.content, .sleep.content, .shop {
+        .block-name {
+            span {  
+                h3 {
+                    font-size: 50px;
+                }
+
+                span {
+                    font-size: 90px;
+                }   
+
+            }
+        }
+    }
+}

@@ -30,6 +30,10 @@
         &__info {
             &rm {
                 &-title {
+                    span.sum {
+                      display: block;
+                    }
+
                     .quantity {
                         display: inline-flex;
 

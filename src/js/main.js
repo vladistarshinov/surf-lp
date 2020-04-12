@@ -193,6 +193,8 @@ $(function(){
     });
 
 
+
+    new WOW().init();
 });
 
 

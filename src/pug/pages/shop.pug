@@ -1,5 +1,5 @@
 section.shop#shop
-    .block-name
+    .block-name.wow.fadeInLeft(data-wow-offset='400')
       span
         span shop
         h3 shop
@@ -7,22 +7,22 @@ section.shop#shop
     .shop-slider
       .shop-slider__item
         .shop-slider__info
-          .shop-slider__inform
+          .shop-slider__inform.wow.slideInLeft(data-wow-offset='200', data-wow-delay='.2s')
             .shop-info
               .subtitle-line_right style
               .info-title__description north nugget tt surfboard
             // /.shop-info
             .shop-price
               ul.shop__star-list.star-list
-                li
+                li.wow.fadeInLeft(data-wow-offset = '100', data-wow-delay='2.1s')
                   img(src='img/sleep/slider/star.svg', alt='')
-                li
+                li.wow.fadeInLeft(data-wow-offset = '100', data-wow-delay='2.2s')
                   img(src='img/sleep/slider/star.svg', alt='')
-                li
+                li.wow.fadeInLeft(data-wow-offset = '100', data-wow-delay='2.3s')
                   img(src='img/sleep/slider/star.svg', alt='')
-                li
+                li.wow.fadeInLeft(data-wow-offset = '100', data-wow-delay='2.4s')
                   img(src='img/sleep/slider/star.svg', alt='')
-                li
+                li.wow.fadeInLeft(data-wow-offset = '100', data-wow-delay='2.5s')
                   img(src='img/sleep/slider/star.svg', alt='')
               span
                 | $799
@@ -35,7 +35,7 @@ section.shop#shop
             // /.shop-slider__btn
           // /.shop-slider__inform
           .shop-slider__product
-            .surfboard
+            .surfboard.wow.fadeInUp(data-wow-offset='200')
               img(src='img/shop/slider/surfboard-slide-1.png', alt='')
               .surfboard-info.surf-box--1
                 .surfboard-info__dots
@@ -59,7 +59,7 @@ section.shop#shop
                   | improve mobility &amp; make turns heavy
               // /.surfboard-info
             // /.surfboard
-            .extras
+            .extras.wow.slideInRight(data-wow-offset='200', data-wow-delay='.4s')
               .extras__head Extras
               .extras-blocks
                 .extras-block

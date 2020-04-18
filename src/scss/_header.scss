@@ -52,7 +52,7 @@
 .aside {
     &__nav {
         &-menu {
-            padding-top: 38px;
+            padding-top: 15px; //38px
             text-align: center;
 
             a {
@@ -62,8 +62,8 @@
                     line-height: 14px;
                     letter-spacing: 3px;
                     font-weight: 500;
-                    padding-top: 6px;
-                    margin-bottom: 25px;
+                    padding-top: 4px;
+                    margin-bottom: 18px;
                     align-items: center;
                     justify-content: center;
                     text-transform: capitalize;
@@ -81,7 +81,7 @@
 
         &-dd {
             font-weight: 800;
-            font-size: 72px;
+            font-size: 64px;
             line-height: 64px;
         }
 

@@ -499,6 +499,11 @@
             }
             &--2 {
                 top: 230px;
+
+                .mapinfo-placemark::before {
+                    right: -514px;
+                    top: -104px;
+                }
             }
             &--3 {
                 top: 255px;
@@ -1158,6 +1163,20 @@
     }
 }
 
+@media (max-width: 450px) {
+    .shop-slider__product .surfboard .surf-box--1 .surfboard-info__content {
+        transform: translate(-150px, 20px);
+    }
+
+    .shop-slider__product .surfboard .surf-box--2 .surfboard-info__content {
+        transform: translate(0px, 10px);
+    }
+
+    .shop-slider__product .surfboard .surf-box--3 .surfboard-info__content {
+        transform: translate(-35px, 10px);
+    }
+}
+
 @media (max-width: 400px) {
 
     .shop {
@@ -1175,18 +1194,6 @@
                 }
             }  
         }
-    }
-
-    .shop-slider__product .surfboard .surf-box--1 .surfboard-info__content {
-        transform: translate(-150px, 20px);
-    }
-
-    .shop-slider__product .surfboard .surf-box--2 .surfboard-info__content {
-        transform: translate(0px, 10px);
-    }
-
-    .shop-slider__product .surfboard .surf-box--3 .surfboard-info__content {
-        transform: translate(-35px, 10px);
     }
 
     .shop-slider__product .extras-blocks {

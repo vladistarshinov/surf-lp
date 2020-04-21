@@ -1,0 +1,32 @@
+.overlay.bounceIn#overlay
+    .popup
+        .popup-title
+          | feedback form
+        // /.popup-title
+        .popup-close#popup-close
+          | &times;
+        // /.popup-close
+        .popup-form.dark-bg
+            form.main-form(action="#")
+                .popup-form__header
+                  | get a personalized offer
+                  br
+                  span 
+                    | to purchase surfing equipment!
+                  label.popup-form__label
+                    span
+                      | Enter 
+                    | your phone number
+                  input.popup-form__input(type="tel", name="phone", placeholder="+7 (999) 999-99-99", required)
+                  button.button.popup-form__btn
+                    | Submit
+                  small.popup-form__note
+                    span
+                      | *We 
+                    | will call you back within an hour
+                // /.popup-form__header
+            // /.main-form
+        // /.popup-form
+    // /.popup
+// /.overlay
+                    

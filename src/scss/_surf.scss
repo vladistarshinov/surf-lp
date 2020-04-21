@@ -89,11 +89,11 @@
                         content: "";
                         position: absolute;
                         background-image: url(../img/surf/map/map-placemark.svg);
-                        width: 14px;
+                        width: 15px;
                         height: 18px;
                         background-size: cover;
-                        right: -22px;
-                        top: -25px;
+                        right: -600px;
+                        top: -100px;
                     }
                 }
             }
@@ -260,9 +260,14 @@
                 &-slider {
                     &__item {
                         background: rgba(#1C2121, .3);
+                        
+                        &-area {
+                            color: lighten(#fbff00,  10%);
+                        }
                     }
                 }
             }
+    
         }
 
         &__box {

@@ -165,10 +165,7 @@ button.btn {
     font-weight: 800;
     line-height: 36px;
     outline: none;
-    
-    &:active {
-        outline: none;
-    }
+    overflow: hidden;
 
     span {
         padding: 17px 47px 15px 17px;
@@ -176,6 +173,7 @@ button.btn {
         display: inline-flex;
         margin-left: 19px;
         position: relative;
+        cursor: pointer;
 
         &::before {
             content: "";
@@ -197,6 +195,23 @@ button.btn {
             right: 12px;
             transform: translateY(-40%);
         }
+
+        .pulse {
+            background-color: lighten($green, 10%);
+            border-radius: 50%;
+            animation: pulse 0.7s ease-out;
+            transform: scale(0);
+            position: absolute;
+        }
+
+        @keyframes pulse {
+            to {
+                transform: scale(2);
+                background-color: #fff;
+                opacity: 0;
+            }
+        }
+        
     }
 }
 

@@ -11,9 +11,9 @@
   
 // }); 
 
-let popup_open = document.querySelectorAll('#shop-btn');
-let popup_close = document.getElementById('popup-close');
-let modal = document.getElementById('overlay');
+const popup_open = document.getElementsByClassName('shop-btn');
+const popup_close = document.getElementById('popup-close');
+const modal = document.getElementById('overlay');
 
 for (var i = 0; i < popup_open.length; i++) {
     popup_open[i].onclick = function() { 

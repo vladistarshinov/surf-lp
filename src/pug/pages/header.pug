@@ -38,6 +38,7 @@ header.header
     //.aside__search
       //img(src='img/header/navigation/icon-search.svg', alt='')
     // /.aside__search
+
     .aside__date
       span.aside__date-dd#day
       br
@@ -145,9 +146,14 @@ header.header
       // /.slider-page__info
     // /.header__slider-page
   // /.header__slider
-  .header__anchor
-    a.animated.fadeInDown.infinite.slower(href='#surf')
-      img(src='img/header/main/arrow-down.svg', alt='')
+  .header__callback
+    // Call back widget
+    .btn-wrapper
+      .btn-pulse
+        .box
+        .icon-phone
+          i.fa.fa-phone
+        .text Call back
   // /.header__anchor
   .slider-pagination.animated.fadeInUp.delay-2s
     .slider-pagination__item

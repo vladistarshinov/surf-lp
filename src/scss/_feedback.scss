@@ -1,0 +1,286 @@
+.form-wrapper {   
+    .form-toggle {
+        display: block;
+        background: linear-gradient(to left, $green, rgb(51, 195, 231), rgb(0, 140, 221));
+        //background: $green;
+        color: #fff;
+        text-align: center;
+        margin: 0 auto;
+        font-size: 20px;
+        padding: 5px 0;
+        border-radius: 8px 8px 0 0;
+        width: 85%;
+        cursor: pointer;
+
+        &[type='checkbox'] {
+            display: none;
+        }
+
+        &:checked ~ .form-container {
+            transform: translateY(0);
+            position: fixed;  
+        }
+    }
+
+    .form-toggle i {
+        position: absolute;
+        top: 1px;
+        left: 70px;
+        font-size: 30px;
+    }
+    
+    .form-container {
+        width: 400px;
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        right: 5%;
+        transform: translateY(575px);
+        opacity: .3;
+        transition: .5s;
+        z-index: 10;
+        
+
+        &:hover {
+            transform: translateY(560px);
+            opacity: 1;
+        }
+
+        .feedback-form {
+            padding: 30px;
+            border: 3px solid $green;
+            background: url(../img/feedback/feed-bg.jpg);
+
+            .info-box {
+                position: relative;
+                margin: 0 0 30px;
+
+                &__header {
+                    position: absolute;
+                    font-size: 18px;
+                    color: #fff;
+                    text-transform: capitalize;
+                    line-height: 55px;
+                    padding-left: 5px;
+                    transition: .5s;
+
+                }
+
+                &__endheader,
+                &__endheader a {
+                    color: #fff;
+                }
+
+                
+                &__endheader span,
+                &__endheader a {
+                    text-transform: lowercase;
+                }
+
+                &__endheader a:hover {
+                    text-decoration: none;
+                    color: $green;
+                }
+
+                &__data {
+                    position: relative;
+                    background: transparent;
+                    width: 100%;
+                    height: 50px;
+                    font-size: 20px;
+                    color: #fff;
+                    outline: none;
+                    border: none;
+                    border-bottom: 1px solid #fff;
+                }
+
+                textarea.info-box__data {
+                    height: 100px;
+                    margin-top: 12px;
+                }
+            }
+
+            .button {
+                width: 140px;
+                height: 56px;
+                margin-left: 16px;
+                font-weight: 500;
+                font-size: 15px;
+                line-height: 22px;
+                background-color: transparent;
+                color: $green;
+                border: 1px solid $green;
+                border-radius: 10px;
+                margin-left: 50%;
+                outline: none;
+                position: relative;
+                transition: .5s;
+                overflow: hidden;
+                cursor: pointer;
+
+                &::before,
+                &::after {
+                    position: absolute;
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(to left, $green, rgb(51, 195, 231), rgb(0, 140, 221));
+                    top: 0;
+                    left: -100%;
+                    opacity: .5;
+                    transition: .5s;
+                    border-radius: 10px;
+                    z-index: -1;
+                }
+
+                &::after {
+                    opacity: 1;
+                    transition-delay: .2s;
+                }
+
+                &:hover {
+                    color: #fff;
+                }
+
+                &:hover::before,
+                &:hover::after {
+                    left: 0;
+                }
+
+                .pulse {
+                    background-color: lighten($green, 10%);
+                    border-radius: 50%;
+                    animation: pulse 0.7s ease-out;
+                    transform: scale(0);
+                    position: absolute;
+                }
+
+                @keyframes pulse {
+                    to {
+                        transform: scale(2);
+                        background-color: #fff;
+                        opacity: 0;
+                    }
+                }
+            }
+
+            .focus {
+                .info-box {
+                    &__header {
+                        transform: translateY(-35px);
+                        font-size: 16px;
+                        color: $green;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.btn-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 5%; 
+    transform: translate(-50%, -50%);
+
+    .btn-pulse, .box, .icon-phone {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        color: #fff;
+        text-align: center;
+        border-radius: 50%;
+    }
+
+    .btn-pulse {
+        background: $green;
+      // background: transparent;
+        position: relative;
+
+        &:hover::before,
+        &:hover::after {
+            content: '';
+            position: absolute;
+            border: 1px solid $green;
+            left: -20px;
+            right: -20px;
+            top: -20px;
+            bottom: -20px;
+            border-radius: 50%;
+            animation: pulse 1.8s linear infinite;
+            opacity: 0;
+        }
+
+        &:hover::after {
+            animation-delay: .5s;
+        }
+
+        &:hover i {
+            transition: .5s ease-in-out;
+            transform: scale(0);
+        }
+
+        &:hover .text {
+            transform: scaleX(1);
+            transition: .5s ease-in-out;
+            opacity: 1;
+        }
+
+        .box {
+            cursor: pointer;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .icon-phone {
+            font-size: 30px;
+            line-height: 74px;
+            animation: phone .9s ease-in-out infinite;
+        }
+
+        .icon-phone i {
+            transition: .5s ease-in-out;
+        }
+
+        .text {
+           opacity: 0;
+           position: absolute;
+           text-transform: uppercase;
+           font-weight: 700;
+           top: 18px;
+           width: 25px;
+           left: 24px;
+           font-size: 15px;
+           transform: scaleX(-1);
+           display: flex;
+           justify-content: center;
+           transition: .5s ease-in-out;
+        }
+    }
+}
+
+@keyframes phone {
+    0%, 99% {
+        transform: rotate(-20deg);
+    }
+
+    50% {
+        transform: rotate(21deg);
+    }
+}
+
+@keyframes pulse {
+    0%{
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}

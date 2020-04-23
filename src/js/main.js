@@ -14,7 +14,7 @@ $(function(){
       asNavFor: '.header__slider',
       responsive: [
         {
-          breakpoint: 561,
+          breakpoint: 841,
           settings: "unslick"
         },
       ]

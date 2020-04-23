@@ -1,3 +1,4 @@
+
 html {
     box-sizing: border-box;
 }
@@ -174,6 +175,11 @@ button.btn {
         margin-left: 19px;
         position: relative;
         cursor: pointer;
+        transition: .5s;
+
+        &:hover {
+            transform: scale(1.2);
+        }
 
         &::before {
             content: "";
@@ -197,7 +203,7 @@ button.btn {
         }
 
         .pulse {
-            background-color: lighten($green, 10%);
+            background-color: lighten($green, 30%);
             border-radius: 50%;
             animation: pulse 0.7s ease-out;
             transform: scale(0);

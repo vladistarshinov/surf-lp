@@ -2,7 +2,7 @@ header.header
   .header__title
     span go
     br
-    span serf
+    span surf
   // /.header__title
   .menu__btn
     .menu__btn-circle
@@ -149,12 +149,20 @@ header.header
   .header__callback
     // Call back widget
     .btn-wrapper
-      .btn-pulse
+      a.btn-pulse
+        span
         .box
         .icon-phone
-          i.fa.fa-phone
+          i.fa.fa-comment-o
         .text Call back
-  // /.header__anchor
+      nav.menu-callback
+        a.btn-question
+          i.fa.fa-envelope-o
+        a.btn-phone
+          i.fa.fa-phone
+        a.btn-vk(href='https://vk.com/')
+          i.fa.fa-vk
+  // /.header__callback
   .slider-pagination.animated.fadeInUp.delay-2s
     .slider-pagination__item
       .slider-item

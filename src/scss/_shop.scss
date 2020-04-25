@@ -8,6 +8,9 @@
 
         .slider-arrows {
             opacity: .25;
+            cursor: pointer;
+            z-index: 5;
+            position: absolute;
         }
         
         &__info {

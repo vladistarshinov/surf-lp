@@ -1,11 +1,11 @@
 wrapper
-  .form-wrapper
+  .form-wrapper__feedback
     input.form-toggle(type='checkbox', name='toggle', id='form-toggle')
     .form-container
       label.form-toggle(for='form-toggle')
         i.fa.fa-question-circle-o
         span Ask question
-      form.feedback-form.dark-bg(action="#")
+      form.feedback-form.dark-bg(style='background: url(../img/feedback/feed-bg.jpg);', action="#")
         .info-box
           label.info-box__header Your name
           input.info-box__data(type='text', required)
@@ -19,10 +19,12 @@ wrapper
           label.info-box__header Message
           textarea.info-box__data(required)
         .info-box
-          input(type='checkbox', required)
-          label.info-box__endheader i 
-            span agree to the processing of my 
-            a(href='#') personal data
+          label.checkbox.checkbox-option
+            input.checkbox__input(type='checkbox', required)
+            span.checkbox_span
+            span.info-box__endheader i 
+              span agree to the processing of my 
+              a(href='#') personal data
         button.button.btn-click
           | Submit
 

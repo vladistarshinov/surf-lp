@@ -49,7 +49,7 @@
 
         // Call back widget
         .btn-wrapper {
-            position: absolute;
+            position: relative;
             transform: translate(-50%, -50%);
         
             .btn-pulse, .box, .icon-phone {
@@ -65,6 +65,47 @@
                 background: linear-gradient(to left, $green, rgb(51, 195, 231), rgb(0, 140, 221));
               // background: transparent;
                 position: relative;
+                z-index: 3;
+
+                &__active {
+                    cursor: pointer;
+
+                    .icon-phone {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: absolute;
+                        z-index: 20;
+
+                        &::before{
+                            content: '';
+                            width: 30px;
+                            height: 1px;
+                            border: 3px solid #fff;
+                            position: absolute;
+                            transform: rotate(-45deg);
+                        }
+    
+                        &::after {
+                            content: '';
+                            width: 30px;
+                            height: 1px;
+                            border: 3px solid #fff;
+                            position: absolute;
+                            transform: rotate(45deg);
+                        }
+                    }
+
+                    .icon-phone i {
+                        opacity: 0;
+                    }
+
+                    &:hover .text {
+                        display: none;
+                    }
+
+                }
+
         
                 &:hover::before,
                 &:hover::after {
@@ -76,7 +117,7 @@
                     top: -20px;
                     bottom: -20px;
                     border-radius: 50%;
-                    animation: pulse 1.8s linear infinite;
+                    animation: btn-pulse 1.8s linear infinite;
                     opacity: 0;
                 }
         
@@ -88,6 +129,7 @@
                     transition: .5s ease-in-out;
                     transform: scale(0);
                 }
+
         
                 &:hover .text {
                     transform: scaleX(1);
@@ -98,13 +140,13 @@
                 .box {
                     cursor: pointer;
                     z-index: 1;
-                    overflow: hidden;
-                    
+                    overflow: hidden;      
                 }
+
         
                 .icon-phone {
                     font-size: 30px;
-                    line-height: 74px;
+                    line-height: 64px;
                     animation: phone .9s ease-in-out infinite;
                 }
         
@@ -127,33 +169,71 @@
                    transition: .5s ease-in-out;
                 }
             }
+
+            .menu-callback {
+
+                a {
+                    color: #222;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: 1s;
+                    background-color: $green;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    position: absolute;
+                    transition: 1s;
+                    left: calc(50% - 15px);
+                    top: calc(50% - 15px);
+                    z-index: 0;
+                }
+
+                &__active a {
+                    cursor: pointer;
+
+                    &:hover::before,
+                    &:hover::after {
+                        content: '';
+                        position: absolute;
+                        border: 1px solid $green;
+                        left: -10px;
+                        right: -10px;
+                        top: -10px;
+                        bottom: -10px;
+                        border-radius: 50%;
+                        animation: btn-pulse 0.9s linear infinite;
+                        opacity: 0;
+                    }
+                }
+                
+                
+                $percentX: 150%;
+                $percentY: 30%;
+
+                @for $i from 1 through 3 {
+                    
+                    &__active a:nth-child(#{$i}) {
+                        transform: translate(-300% + $percentX * $i, 200% - $percentY);
+                       
+                        @if $i == 2 {
+                            transform: translate(-300% + $percentX * $i, 200%);
+                        }
+                  }
+
+               /*  &__active a:nth-child(1) {
+                    transform: translate(-150%, 170%);
+                }
+
+                &__active a:nth-child(2) {
+                    transform: translate(0%, 200%);
+                }
+                &__active a:nth-child(3) {
+                    transform: translate(150%, 170%);
+                } */
+            }
         }
         
-        @keyframes phone {
-            0%, 99% {
-                transform: rotate(-20deg);
-            }
-        
-            50% {
-                transform: rotate(21deg);
-            }
-        }
-        
-        @keyframes pulse {
-            0%{
-                transform: scale(0.5);
-                opacity: 0;
-            }
-        
-            50% {
-                opacity: 1;
-            }
-        
-            100% {
-                transform: scale(1.2);
-                opacity: 0;
-            }
-        }
     }
 }
 
@@ -363,4 +443,32 @@
         line-height: 19px;
         text-transform: capitalize;
     }
+}
+
+@keyframes phone {
+    0%, 99% {
+        transform: rotate(-20deg);
+    }
+
+    50% {
+        transform: rotate(21deg);
+    }
+}
+
+
+@keyframes btn-pulse {
+    0%{
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
 }

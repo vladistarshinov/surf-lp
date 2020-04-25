@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/style.min.css">
 </head>
 <header class="header">
-  <div class="header__title"><span>go</span><br><span>serf</span></div>
+  <div class="header__title"><span>go</span><br><span>surf</span></div>
   <!-- /.header__title-->
   <div class="menu__btn">
     <div class="menu__btn-circle">
@@ -158,15 +158,14 @@
   <!-- /.header__slider-->
   <div class="header__callback">
     <!-- Call back widget-->
-    <div class="btn-wrapper">
-      <div class="btn-pulse">
+    <div class="btn-wrapper"><a class="btn-pulse"><span></span>
         <div class="box"></div>
-        <div class="icon-phone"><i class="fa fa-phone"></i></div>
-        <div class="text">Call back</div>
-      </div>
+        <div class="icon-phone"><i class="fa fa-comment-o"></i></div>
+        <div class="text">Call back</div></a>
+      <nav class="menu-callback"><a class="btn-question"><i class="fa fa-envelope-o"></i></a><a class="btn-phone"><i class="fa fa-phone"></i></a><a class="btn-vk" href="https://vk.com/"><i class="fa fa-vk"></i></a></nav>
     </div>
   </div>
-  <!-- /.header__anchor-->
+  <!-- /.header__callback-->
   <div class="slider-pagination animated fadeInUp delay-2s">
     <div class="slider-pagination__item">
       <div class="slider-item">
@@ -1799,7 +1798,7 @@
   <!-- /.shop-->
 </div>
 <!-- /.container-->
-<footer class="footer"><a class="btn" href="">go <span>surf</span></a>
+<footer class="footer"><a class="btn">go <span class="btn-click">surf</span></a>
   <div class="footer__copyright">&copy; Go-Surf 2018. All Rights Reserved.</div>
 </footer>
 <!-- /.footer-->
@@ -1827,11 +1826,11 @@
 </div>
 <!-- /.overlay-->
 <wrapper>
-  <div class="form-wrapper">
+  <div class="form-wrapper__feedback">
     <input class="form-toggle" type="checkbox" name="toggle" id="form-toggle">
     <div class="form-container">
       <label class="form-toggle" for="form-toggle"><i class="fa fa-question-circle-o"></i><span>Ask question</span></label>
-      <form class="feedback-form dark-bg" action="#">
+      <form class="feedback-form dark-bg" style="background: url(../img/feedback/feed-bg.jpg);" action="#">
         <div class="info-box">
           <label class="info-box__header">Your name</label>
           <input class="info-box__data" type="text" required>
@@ -1849,11 +1848,35 @@
           <textarea class="info-box__data" required></textarea>
         </div>
         <div class="info-box">
-          <input type="checkbox" required>
-          <label class="info-box__endheader">i <span>agree to the processing of my </span><a href="#">personal data</a></label>
+          <label class="checkbox checkbox-option">
+            <input class="checkbox__input" type="checkbox" required><span class="checkbox_span"></span><span class="info-box__endheader">i <span>agree to the processing of my </span><a href="#">personal data</a></span>
+          </label>
         </div>
         <button class="button btn-click">Submit</button>
       </form>
+    </div>
+  </div>
+</wrapper>
+<wrapper class="callback">
+  <div class="form-wrapper__callback">
+    <input class="form-toggle__callback" type="checkbox" name="toggle" id="form-toggle__callback">
+    <div class="form-container__callback">
+      <form class="callback-form dark-bg" style="background-image: url(../img/callback/call-bg.jpg);" action="#">
+        <div class="info-box"> 
+          <div class="header-box"><span class="header-first">Leave </span><span class="header-second">your number and we will call you back in a few minutes</span></div>
+        </div>
+        <div class="info-box">
+          <label class="info-box__header">Number</label>
+          <input class="info-box__data popup-form__input" type="tel" required>
+        </div>
+        <div class="info-box">
+          <label class="checkbox checkbox-option">
+            <input class="checkbox__input" type="checkbox" required><span class="checkbox_span"></span><span class="info-box__endheader">i <span>agree to the processing of my </span><a href="#">personal data</a></span>
+          </label>
+        </div>
+        <button class="button btn-click">Submit</button>
+      </form>
+      <label class="form-toggle__callback" for="form-toggle__callback"><i class="fa fa-phone"></i><span>Leave phone</span></label>
     </div>
   </div>
 </wrapper>
@@ -1870,4 +1893,6 @@
 <script src="js/shopDots.js"></script>
 <script src="js/pulseBtn.js"></script>
 <script src="js/currentDate.js"></script>
-<script src="js/feedback.js"></script>
+<script src="js/focusFormItem.js"></script>
+<script src="js/surfbox3D.js"></script>
+<script src="js/contactsBtnPlugin.js"></script>

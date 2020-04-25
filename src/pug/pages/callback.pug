@@ -1,0 +1,24 @@
+wrapper.callback
+  .form-wrapper__callback
+    input.form-toggle__callback(type='checkbox', name='toggle', id='form-toggle__callback')
+    .form-container__callback
+      form.callback-form.dark-bg(style='background-image: url(../img/callback/call-bg.jpg);', action="#")
+        .info-box 
+          .header-box
+            span.header-first Leave 
+            span.header-second your number and we will call you back in a few minutes
+        .info-box
+          label.info-box__header Number
+          input.info-box__data.popup-form__input(type='tel', required)
+        .info-box
+          label.checkbox.checkbox-option
+            input.checkbox__input(type='checkbox', required)
+            span.checkbox_span
+            span.info-box__endheader i 
+              span agree to the processing of my 
+              a(href='#') personal data
+        button.button.btn-click
+          | Submit
+      label.form-toggle__callback(for='form-toggle__callback')
+        i.fa.fa-phone
+        span Leave phone

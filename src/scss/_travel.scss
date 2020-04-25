@@ -10,6 +10,9 @@
     .slider-arrows {
         top: 225px;
         opacity: .5;
+        position: absolute;
+        cursor: pointer;
+        z-index: 5;
     }
 
     &-slider { 

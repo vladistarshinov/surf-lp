@@ -238,6 +238,9 @@
         .slider-arrows {
             top: 50px;
             opacity: .3;
+            position: absolute;
+            cursor: pointer;
+            z-index: 5;
         }
 
         .slick-slide:nth-child(4n+1) {
@@ -264,17 +267,27 @@
             .surf {
                 &-slider {
                     &__item {
-                        background: rgba(#1C2121, .3);         
+                        background: rgba(#1C2121, .3);   
+                        
+                        &-btn {
+                            display: block;
+                        }
                     }
                 }
             }
     
         }
 
+        &__img {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
         &__box {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            transition: transform 0.2s;
         }
 
         &__item {
@@ -282,8 +295,7 @@
             min-height: 750px;
             background: rgba(#1C2121, .85);
 
-            &:hover {
-               // background: rgba(#1C2121, .3);
+          /* &:hover {
                 .surf {
                     &-slider {
                         &__item { 
@@ -293,7 +305,7 @@
                         }
                     }
                 }
-            }
+            } */
 
             &-title {
                 padding: 72px 0 0 40px;

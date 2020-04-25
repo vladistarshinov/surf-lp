@@ -388,7 +388,8 @@
         }
 
         .slider-arrows {
-            top: 380px;
+            top: auto;
+            bottom: 240px;
             right: 20px;
             opacity: .5;
      
@@ -441,13 +442,7 @@
     .header {
 
         .slider-arrows {
-            top: 430px;
-            right: 20px;
-            opacity: .5;
-     
-            &__left {
-                 right: 60px;
-            }
+            bottom: 200px;
         }
     }
 
@@ -1490,6 +1485,36 @@
                 }
             } 
 
+        }
+    }
+
+    .form-wrapper__feedback.active {
+        .form-container {
+            width: 300px;
+            transform: translate(82%, 485px);
+
+            &:hover {
+                transform: translate(70%, 470px);
+                opacity: 1;
+            }
+
+            .feedback-form {
+                padding: 10px;
+
+                .info-box {
+                    margin: 0 0 20px;
+                }
+
+                .focus {
+                    .info-box {
+                        &__header {
+                            transform: translateY(-25px);
+                            font-size: 16px;
+                            color: $green;
+                        }
+                    }
+                }
+            }
         }
     }
 

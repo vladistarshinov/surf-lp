@@ -5,19 +5,23 @@ wrapper
       label.form-toggle(for='form-toggle')
         i.fa.fa-question-circle-o
         span Ask question
-      form.feedback-form.dark-bg(style='background: url(../img/feedback/feed-bg.jpg);', action="#")
+      form.feedback-form.dark-bg(style='background: url(img/feedback/feed-bg.jpg);', action="#")
         .info-box
           label.info-box__header Your name
           input.info-box__data(type='text', required)
+        // /.info-box
         .info-box
           label.info-box__header E-mail
           input.info-box__data(type='email', required)
+        // /.info-box
         .info-box
           label.info-box__header Number
           input.info-box__data.popup-form__input(type='tel', required)
+        // /.info-box
         .info-box
           label.info-box__header Message
           textarea.info-box__data(required)
+        // /.info-box
         .info-box
           label.checkbox.checkbox-option
             input.checkbox__input(type='checkbox', required)
@@ -25,7 +29,12 @@ wrapper
             span.info-box__endheader i 
               span agree to the processing of my 
               a(href='#') personal data
+        // /.info-box
         button.button.btn-click
           | Submit
-
+      // /.feedback-form
+    // /.form-container
+    // /.form-toggle
+  // /.form-wrapper__feedback
+// /wrapper
   

@@ -1,4 +1,4 @@
-let gulp = require('gulp'),
+const gulp = require('gulp'),
     pug = require('gulp-pug'),
     sass = require('gulp-sass'),
     browserSync = require('browser-sync'),
@@ -6,6 +6,7 @@ let gulp = require('gulp'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
     del = require('del'),
+    imagemin = require('gulp-imagemin'),
     autoprefixer = require('gulp-autoprefixer');
 
 
@@ -65,6 +66,12 @@ gulp.task('js', function(){
     .pipe(browserSync.reload({stream: true}))
 });
 
+gulp.task('img-compress', function() {
+	return gulp.src('src/img/**/*') 
+    .pipe(imagemin())
+		.pipe(gulp.dest('dist/img')) 
+});
+
 gulp.task('browser-sync', function() {
   browserSync.init({
       server: {
@@ -87,16 +94,17 @@ gulp.task('export', function(){
     .pipe(gulp.dest('dist/fonts'));
 
   let BuildImg = gulp.src('src/img/**/*.*')
-    .pipe(gulp.dest('dist/img'));   
+    .pipe(gulp.dest('dist/img'));    
 });
 
 gulp.task('watch', function(){
   gulp.watch('src/scss/**/*.scss', gulp.parallel('scss'));
+  gulp.watch('src/pug/pages/*.pug', gulp.parallel('pug'));
   gulp.watch('src/pug/*.pug', gulp.parallel('pug'));
   gulp.watch('src/*.html', gulp.parallel('html'));
   gulp.watch('src/js/*.js', gulp.parallel('script'));
 });
 
-gulp.task('build', gulp.series('clean', 'export'))
+gulp.task('build', gulp.series('clean', 'export'));
 
 gulp.task('default', gulp.parallel('css' ,'scss', 'pug', 'js', 'browser-sync', 'watch'));

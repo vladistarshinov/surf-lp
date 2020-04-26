@@ -1491,10 +1491,10 @@
     .form-wrapper__feedback.active {
         .form-container {
             width: 300px;
-            transform: translate(82%, 485px);
+            transform: translate(82%, 438px);
 
             &:hover {
-                transform: translate(70%, 470px);
+                transform: translate(70%, 423px);
                 opacity: 1;
             }
 
@@ -1502,14 +1502,14 @@
                 padding: 10px;
 
                 .info-box {
-                    margin: 0 0 20px;
+                    margin: 0 0 10px;
                 }
 
                 .focus {
                     .info-box {
                         &__header {
-                            transform: translateY(-25px);
-                            font-size: 16px;
+                            transform: translateY(-20px);
+                            font-size: 14px;
                             color: $green;
                         }
                     }

@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 $(function(){
 
     $('<div class="quantity-nav"><div class="quantity-button quantity-up"><img src="img/sleep/slider/plus.svg" alt=""></div><div class="quantity-button quantity-down"><img src="img/sleep/slider/minus.svg" alt=""></div></div>').insertAfter('.quantity input');

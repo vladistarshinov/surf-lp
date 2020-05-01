@@ -38,19 +38,19 @@
         position: fixed;
         top: 0;
         right: 5%;
-        transform: translateY(-325px);
+        transform: translateY(-290px);
         opacity: .8;
         transition: .5s;
         z-index: 10;
         
 
         &:hover {
-            transform: translateY(-310px);
+            transform: translateY(-275px);
             opacity: 1;
         }
 
         .callback-form {
-            padding: 30px;
+            padding: 20px;
             border: 3px solid $green;
 
             .info-box {

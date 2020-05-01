@@ -8,6 +8,10 @@
   },
   "author": "Vlad",
   "license": "ISC",
+  "browserslist": [
+    "> 1%",
+    "not dead"
+  ],
   "devDependencies": {
     "animate.css": "^3.7.2",
     "browser-sync": "^2.26.5",
@@ -21,9 +25,20 @@
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.2",
     "normalize.css": "^8.0.1",
-    "wow.js": "^1.2.2"
+    "wow.js": "^1.2.2",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "core-js": "^3.6.5",
+    "webpack": "^4.43.0",
+    "webpack-stream": "^5.2.1"
   },
   "dependencies": {
-    "slick-carousel": "^1.8.1"
+    "imask": "^6.0.3",
+    "jquery": "^3.5.0",
+    "slick-carousel": "^1.8.1",
+    "wowjs": "^1.1.3"
   }
 }

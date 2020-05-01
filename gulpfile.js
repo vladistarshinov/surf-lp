@@ -7,8 +7,10 @@ const gulp = require('gulp'),
     rename = require('gulp-rename'),
     del = require('del'),
     imagemin = require('gulp-imagemin'),
+    webpack = require("webpack-stream"),
     autoprefixer = require('gulp-autoprefixer');
 
+    const dist = "./dist/";
 
 gulp.task('clean', async function(){
   del.sync('dist')
@@ -37,8 +39,9 @@ gulp.task('scss', function(){
 gulp.task('css', function(){
   return gulp.src([
     'node_modules/normalize.css/normalize.css',
-    'node_modules/slick-carousel/slick/slick.css',
     'node_modules/animate.css/animate.css',
+    'node_modules/slick-carousel/slick/slick.css',
+    'node_modules/slick-carousel/slick/slick-theme.css'
   ])
     .pipe(concat('_libs.scss'))
     .pipe(gulp.dest('src/scss'))
@@ -50,20 +53,64 @@ gulp.task('html', function(){
   .pipe(browserSync.reload({stream: true}))
 });  
 
-gulp.task('script', function(){
-  return gulp.src('src/js/*.js')
-  .pipe(browserSync.reload({stream: true}))
+gulp.task("build-js", function() {
+  return gulp.src("./src/js/main.js")
+              .pipe(webpack({
+                  mode: 'development',
+                  output: {
+                      filename: 'js/script.js'
+                  },
+                  watch: false,
+                  devtool: "source-map",
+                  module: {
+                      rules: [
+                        {
+                          test: /\.m?js$/,
+                          exclude: /(node_modules|bower_components)/,
+                          use: {
+                            loader: 'babel-loader',
+                            options: {
+                              presets: [['@babel/preset-env', {
+                                  debug: true,
+                                  corejs: 3,
+                                  useBuiltIns: "usage"
+                              }]]
+                            }
+                          }
+                        }
+                      ]
+                    }
+              }))
+              .pipe(gulp.dest(dist))
+              .on("end", browserSync.reload);
 });
 
-gulp.task('js', function(){
-  return gulp.src([
-    'node_modules/slick-carousel/slick/slick.js',
-    'node_modules/wow.js/dist/wow.js'
-  ])
-    .pipe(concat('libs.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('src/js'))
-    .pipe(browserSync.reload({stream: true}))
+gulp.task("build-prod-js", function() {
+  return gulp.src("./src/js/main.js")
+              .pipe(webpack({
+                  mode: 'production',
+                  output: {
+                      filename: 'js/script.js'
+                  },
+                  module: {
+                      rules: [
+                        {
+                          test: /\.m?js$/,
+                          exclude: /(node_modules|bower_components)/,
+                          use: {
+                            loader: 'babel-loader',
+                            options: {
+                              presets: [['@babel/preset-env', {
+                                  corejs: 3,
+                                  useBuiltIns: "usage"
+                              }]]
+                            }
+                          }
+                        }
+                      ]
+                    }
+              }))
+              .pipe(gulp.dest(dist));
 });
 
 gulp.task('img-compress', function() {
@@ -72,13 +119,6 @@ gulp.task('img-compress', function() {
 		.pipe(gulp.dest('dist/img')) 
 });
 
-gulp.task('browser-sync', function() {
-  browserSync.init({
-      server: {
-          baseDir: "src/"
-      }
-  });
-});
 
 gulp.task('export', function(){
   let buildHtml = gulp.src('src/**/*.html')
@@ -86,25 +126,31 @@ gulp.task('export', function(){
 
   let BuildCss = gulp.src('src/css/**/*.css')
     .pipe(gulp.dest('dist/css'));
-
-  let BuildJs = gulp.src('src/js/**/*.js')
-    .pipe(gulp.dest('dist/js'));
     
   let BuildFonts = gulp.src('src/fonts/**/*.*')
     .pipe(gulp.dest('dist/fonts'));
 
   let BuildImg = gulp.src('src/img/**/*.*')
-    .pipe(gulp.dest('dist/img'));    
+    .pipe(gulp.dest('dist/img'));   
+});
+
+gulp.task('browser-sync', function() {
+  browserSync.init({
+      server: {
+          baseDir: "dist/"
+      }
+  });
 });
 
 gulp.task('watch', function(){
+
   gulp.watch('src/scss/**/*.scss', gulp.parallel('scss'));
   gulp.watch('src/pug/pages/*.pug', gulp.parallel('pug'));
   gulp.watch('src/pug/*.pug', gulp.parallel('pug'));
   gulp.watch('src/*.html', gulp.parallel('html'));
-  gulp.watch('src/js/*.js', gulp.parallel('script'));
+  gulp.watch("src/js/**/*.js", gulp.parallel("build-js"));
 });
 
-gulp.task('build', gulp.series('clean', 'export'));
+gulp.task('build', gulp.series('css' ,'scss', 'pug', 'build-js', 'export'));
 
-gulp.task('default', gulp.parallel('css' ,'scss', 'pug', 'js', 'browser-sync', 'watch'));
+gulp.task('default', gulp.parallel('browser-sync', 'watch', 'build'));

@@ -228,6 +228,7 @@
             width: 50px;
             height: 50px;
             display: flex;
+            cursor: pointer;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
@@ -1411,10 +1412,10 @@
 
         .form-container {
             width: 300px;
-            transform: translate(82%, 575px);
+            transform: translate(82%, 515px);
 
             &:hover {
-                transform: translate(70%, 560px);
+                transform: translate(70%, 500px);
                 opacity: 1;
             }
 
@@ -1434,10 +1435,10 @@
 
         .form-container__callback {
             width: 300px;
-            transform: translate(85%, -350px);
+            transform: translate(85%, -330px);
 
             &:hover {
-                transform: translate(70%, -350px);
+                transform: translate(70%, -315px);
                 opacity: 1;
             }
 
@@ -1491,10 +1492,10 @@
     .form-wrapper__feedback.active {
         .form-container {
             width: 300px;
-            transform: translate(82%, 485px);
+            transform: translate(82%, 418px);
 
             &:hover {
-                transform: translate(70%, 470px);
+                transform: translate(70%, 400px);
                 opacity: 1;
             }
 
@@ -1502,14 +1503,18 @@
                 padding: 10px;
 
                 .info-box {
-                    margin: 0 0 20px;
+                    margin: 0 0 10px;
+
+                    &__data {
+                        font-size: 16px;
+                    }
                 }
 
                 .focus {
                     .info-box {
                         &__header {
-                            transform: translateY(-25px);
-                            font-size: 16px;
+                            transform: translateY(-20px);
+                            font-size: 14px;
                             color: $green;
                         }
                     }

@@ -272,6 +272,7 @@
 
     &__date {
         margin-bottom: 28px;
+        text-align: center;
 
         &-dd {
             font-weight: 800;
@@ -455,7 +456,6 @@
     }
 }
 
-
 @keyframes btn-pulse {
     0%{
         transform: scale(0.5);
@@ -471,4 +471,5 @@
         opacity: 0;
     }
 }
+
 }

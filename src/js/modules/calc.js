@@ -1,7 +1,5 @@
 import $ from 'jquery';
-
-$(function(){
-
+    
     $('<div class="quantity-nav"><div class="quantity-button quantity-up"><img src="img/sleep/slider/plus.svg" alt=""></div><div class="quantity-button quantity-down"><img src="img/sleep/slider/minus.svg" alt=""></div></div>').insertAfter('.quantity input');
     $('.quantity').each(function() {
       var spinner = $(this),
@@ -49,5 +47,3 @@ $(function(){
         let sum = $('.nights', parents).val() * $('.sum', parents).data('nights') + ($('.guests', parents).val() - 1) * $('.sum', parents).data('guests');
         $('.sum', parents).html('$' + sum);
     }); 
-
-});

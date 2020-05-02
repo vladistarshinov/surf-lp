@@ -22088,6 +22088,530 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "./node_modules/wowjs/dist/wow.js":
+/*!****************************************!*\
+  !*** ./node_modules/wowjs/dist/wow.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() {
+  var MutationObserver, Util, WeakMap, getComputedStyle, getComputedStyleRX,
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+
+  Util = (function() {
+    function Util() {}
+
+    Util.prototype.extend = function(custom, defaults) {
+      var key, value;
+      for (key in defaults) {
+        value = defaults[key];
+        if (custom[key] == null) {
+          custom[key] = value;
+        }
+      }
+      return custom;
+    };
+
+    Util.prototype.isMobile = function(agent) {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(agent);
+    };
+
+    Util.prototype.createEvent = function(event, bubble, cancel, detail) {
+      var customEvent;
+      if (bubble == null) {
+        bubble = false;
+      }
+      if (cancel == null) {
+        cancel = false;
+      }
+      if (detail == null) {
+        detail = null;
+      }
+      if (document.createEvent != null) {
+        customEvent = document.createEvent('CustomEvent');
+        customEvent.initCustomEvent(event, bubble, cancel, detail);
+      } else if (document.createEventObject != null) {
+        customEvent = document.createEventObject();
+        customEvent.eventType = event;
+      } else {
+        customEvent.eventName = event;
+      }
+      return customEvent;
+    };
+
+    Util.prototype.emitEvent = function(elem, event) {
+      if (elem.dispatchEvent != null) {
+        return elem.dispatchEvent(event);
+      } else if (event in (elem != null)) {
+        return elem[event]();
+      } else if (("on" + event) in (elem != null)) {
+        return elem["on" + event]();
+      }
+    };
+
+    Util.prototype.addEvent = function(elem, event, fn) {
+      if (elem.addEventListener != null) {
+        return elem.addEventListener(event, fn, false);
+      } else if (elem.attachEvent != null) {
+        return elem.attachEvent("on" + event, fn);
+      } else {
+        return elem[event] = fn;
+      }
+    };
+
+    Util.prototype.removeEvent = function(elem, event, fn) {
+      if (elem.removeEventListener != null) {
+        return elem.removeEventListener(event, fn, false);
+      } else if (elem.detachEvent != null) {
+        return elem.detachEvent("on" + event, fn);
+      } else {
+        return delete elem[event];
+      }
+    };
+
+    Util.prototype.innerHeight = function() {
+      if ('innerHeight' in window) {
+        return window.innerHeight;
+      } else {
+        return document.documentElement.clientHeight;
+      }
+    };
+
+    return Util;
+
+  })();
+
+  WeakMap = this.WeakMap || this.MozWeakMap || (WeakMap = (function() {
+    function WeakMap() {
+      this.keys = [];
+      this.values = [];
+    }
+
+    WeakMap.prototype.get = function(key) {
+      var i, item, j, len, ref;
+      ref = this.keys;
+      for (i = j = 0, len = ref.length; j < len; i = ++j) {
+        item = ref[i];
+        if (item === key) {
+          return this.values[i];
+        }
+      }
+    };
+
+    WeakMap.prototype.set = function(key, value) {
+      var i, item, j, len, ref;
+      ref = this.keys;
+      for (i = j = 0, len = ref.length; j < len; i = ++j) {
+        item = ref[i];
+        if (item === key) {
+          this.values[i] = value;
+          return;
+        }
+      }
+      this.keys.push(key);
+      return this.values.push(value);
+    };
+
+    return WeakMap;
+
+  })());
+
+  MutationObserver = this.MutationObserver || this.WebkitMutationObserver || this.MozMutationObserver || (MutationObserver = (function() {
+    function MutationObserver() {
+      if (typeof console !== "undefined" && console !== null) {
+        console.warn('MutationObserver is not supported by your browser.');
+      }
+      if (typeof console !== "undefined" && console !== null) {
+        console.warn('WOW.js cannot detect dom mutations, please call .sync() after loading new content.');
+      }
+    }
+
+    MutationObserver.notSupported = true;
+
+    MutationObserver.prototype.observe = function() {};
+
+    return MutationObserver;
+
+  })());
+
+  getComputedStyle = this.getComputedStyle || function(el, pseudo) {
+    this.getPropertyValue = function(prop) {
+      var ref;
+      if (prop === 'float') {
+        prop = 'styleFloat';
+      }
+      if (getComputedStyleRX.test(prop)) {
+        prop.replace(getComputedStyleRX, function(_, _char) {
+          return _char.toUpperCase();
+        });
+      }
+      return ((ref = el.currentStyle) != null ? ref[prop] : void 0) || null;
+    };
+    return this;
+  };
+
+  getComputedStyleRX = /(\-([a-z]){1})/g;
+
+  this.WOW = (function() {
+    WOW.prototype.defaults = {
+      boxClass: 'wow',
+      animateClass: 'animated',
+      offset: 0,
+      mobile: true,
+      live: true,
+      callback: null,
+      scrollContainer: null
+    };
+
+    function WOW(options) {
+      if (options == null) {
+        options = {};
+      }
+      this.scrollCallback = bind(this.scrollCallback, this);
+      this.scrollHandler = bind(this.scrollHandler, this);
+      this.resetAnimation = bind(this.resetAnimation, this);
+      this.start = bind(this.start, this);
+      this.scrolled = true;
+      this.config = this.util().extend(options, this.defaults);
+      if (options.scrollContainer != null) {
+        this.config.scrollContainer = document.querySelector(options.scrollContainer);
+      }
+      this.animationNameCache = new WeakMap();
+      this.wowEvent = this.util().createEvent(this.config.boxClass);
+    }
+
+    WOW.prototype.init = function() {
+      var ref;
+      this.element = window.document.documentElement;
+      if ((ref = document.readyState) === "interactive" || ref === "complete") {
+        this.start();
+      } else {
+        this.util().addEvent(document, 'DOMContentLoaded', this.start);
+      }
+      return this.finished = [];
+    };
+
+    WOW.prototype.start = function() {
+      var box, j, len, ref;
+      this.stopped = false;
+      this.boxes = (function() {
+        var j, len, ref, results;
+        ref = this.element.querySelectorAll("." + this.config.boxClass);
+        results = [];
+        for (j = 0, len = ref.length; j < len; j++) {
+          box = ref[j];
+          results.push(box);
+        }
+        return results;
+      }).call(this);
+      this.all = (function() {
+        var j, len, ref, results;
+        ref = this.boxes;
+        results = [];
+        for (j = 0, len = ref.length; j < len; j++) {
+          box = ref[j];
+          results.push(box);
+        }
+        return results;
+      }).call(this);
+      if (this.boxes.length) {
+        if (this.disabled()) {
+          this.resetStyle();
+        } else {
+          ref = this.boxes;
+          for (j = 0, len = ref.length; j < len; j++) {
+            box = ref[j];
+            this.applyStyle(box, true);
+          }
+        }
+      }
+      if (!this.disabled()) {
+        this.util().addEvent(this.config.scrollContainer || window, 'scroll', this.scrollHandler);
+        this.util().addEvent(window, 'resize', this.scrollHandler);
+        this.interval = setInterval(this.scrollCallback, 50);
+      }
+      if (this.config.live) {
+        return new MutationObserver((function(_this) {
+          return function(records) {
+            var k, len1, node, record, results;
+            results = [];
+            for (k = 0, len1 = records.length; k < len1; k++) {
+              record = records[k];
+              results.push((function() {
+                var l, len2, ref1, results1;
+                ref1 = record.addedNodes || [];
+                results1 = [];
+                for (l = 0, len2 = ref1.length; l < len2; l++) {
+                  node = ref1[l];
+                  results1.push(this.doSync(node));
+                }
+                return results1;
+              }).call(_this));
+            }
+            return results;
+          };
+        })(this)).observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+      }
+    };
+
+    WOW.prototype.stop = function() {
+      this.stopped = true;
+      this.util().removeEvent(this.config.scrollContainer || window, 'scroll', this.scrollHandler);
+      this.util().removeEvent(window, 'resize', this.scrollHandler);
+      if (this.interval != null) {
+        return clearInterval(this.interval);
+      }
+    };
+
+    WOW.prototype.sync = function(element) {
+      if (MutationObserver.notSupported) {
+        return this.doSync(this.element);
+      }
+    };
+
+    WOW.prototype.doSync = function(element) {
+      var box, j, len, ref, results;
+      if (element == null) {
+        element = this.element;
+      }
+      if (element.nodeType !== 1) {
+        return;
+      }
+      element = element.parentNode || element;
+      ref = element.querySelectorAll("." + this.config.boxClass);
+      results = [];
+      for (j = 0, len = ref.length; j < len; j++) {
+        box = ref[j];
+        if (indexOf.call(this.all, box) < 0) {
+          this.boxes.push(box);
+          this.all.push(box);
+          if (this.stopped || this.disabled()) {
+            this.resetStyle();
+          } else {
+            this.applyStyle(box, true);
+          }
+          results.push(this.scrolled = true);
+        } else {
+          results.push(void 0);
+        }
+      }
+      return results;
+    };
+
+    WOW.prototype.show = function(box) {
+      this.applyStyle(box);
+      box.className = box.className + " " + this.config.animateClass;
+      if (this.config.callback != null) {
+        this.config.callback(box);
+      }
+      this.util().emitEvent(box, this.wowEvent);
+      this.util().addEvent(box, 'animationend', this.resetAnimation);
+      this.util().addEvent(box, 'oanimationend', this.resetAnimation);
+      this.util().addEvent(box, 'webkitAnimationEnd', this.resetAnimation);
+      this.util().addEvent(box, 'MSAnimationEnd', this.resetAnimation);
+      return box;
+    };
+
+    WOW.prototype.applyStyle = function(box, hidden) {
+      var delay, duration, iteration;
+      duration = box.getAttribute('data-wow-duration');
+      delay = box.getAttribute('data-wow-delay');
+      iteration = box.getAttribute('data-wow-iteration');
+      return this.animate((function(_this) {
+        return function() {
+          return _this.customStyle(box, hidden, duration, delay, iteration);
+        };
+      })(this));
+    };
+
+    WOW.prototype.animate = (function() {
+      if ('requestAnimationFrame' in window) {
+        return function(callback) {
+          return window.requestAnimationFrame(callback);
+        };
+      } else {
+        return function(callback) {
+          return callback();
+        };
+      }
+    })();
+
+    WOW.prototype.resetStyle = function() {
+      var box, j, len, ref, results;
+      ref = this.boxes;
+      results = [];
+      for (j = 0, len = ref.length; j < len; j++) {
+        box = ref[j];
+        results.push(box.style.visibility = 'visible');
+      }
+      return results;
+    };
+
+    WOW.prototype.resetAnimation = function(event) {
+      var target;
+      if (event.type.toLowerCase().indexOf('animationend') >= 0) {
+        target = event.target || event.srcElement;
+        return target.className = target.className.replace(this.config.animateClass, '').trim();
+      }
+    };
+
+    WOW.prototype.customStyle = function(box, hidden, duration, delay, iteration) {
+      if (hidden) {
+        this.cacheAnimationName(box);
+      }
+      box.style.visibility = hidden ? 'hidden' : 'visible';
+      if (duration) {
+        this.vendorSet(box.style, {
+          animationDuration: duration
+        });
+      }
+      if (delay) {
+        this.vendorSet(box.style, {
+          animationDelay: delay
+        });
+      }
+      if (iteration) {
+        this.vendorSet(box.style, {
+          animationIterationCount: iteration
+        });
+      }
+      this.vendorSet(box.style, {
+        animationName: hidden ? 'none' : this.cachedAnimationName(box)
+      });
+      return box;
+    };
+
+    WOW.prototype.vendors = ["moz", "webkit"];
+
+    WOW.prototype.vendorSet = function(elem, properties) {
+      var name, results, value, vendor;
+      results = [];
+      for (name in properties) {
+        value = properties[name];
+        elem["" + name] = value;
+        results.push((function() {
+          var j, len, ref, results1;
+          ref = this.vendors;
+          results1 = [];
+          for (j = 0, len = ref.length; j < len; j++) {
+            vendor = ref[j];
+            results1.push(elem["" + vendor + (name.charAt(0).toUpperCase()) + (name.substr(1))] = value);
+          }
+          return results1;
+        }).call(this));
+      }
+      return results;
+    };
+
+    WOW.prototype.vendorCSS = function(elem, property) {
+      var j, len, ref, result, style, vendor;
+      style = getComputedStyle(elem);
+      result = style.getPropertyCSSValue(property);
+      ref = this.vendors;
+      for (j = 0, len = ref.length; j < len; j++) {
+        vendor = ref[j];
+        result = result || style.getPropertyCSSValue("-" + vendor + "-" + property);
+      }
+      return result;
+    };
+
+    WOW.prototype.animationName = function(box) {
+      var animationName, error;
+      try {
+        animationName = this.vendorCSS(box, 'animation-name').cssText;
+      } catch (error) {
+        animationName = getComputedStyle(box).getPropertyValue('animation-name');
+      }
+      if (animationName === 'none') {
+        return '';
+      } else {
+        return animationName;
+      }
+    };
+
+    WOW.prototype.cacheAnimationName = function(box) {
+      return this.animationNameCache.set(box, this.animationName(box));
+    };
+
+    WOW.prototype.cachedAnimationName = function(box) {
+      return this.animationNameCache.get(box);
+    };
+
+    WOW.prototype.scrollHandler = function() {
+      return this.scrolled = true;
+    };
+
+    WOW.prototype.scrollCallback = function() {
+      var box;
+      if (this.scrolled) {
+        this.scrolled = false;
+        this.boxes = (function() {
+          var j, len, ref, results;
+          ref = this.boxes;
+          results = [];
+          for (j = 0, len = ref.length; j < len; j++) {
+            box = ref[j];
+            if (!(box)) {
+              continue;
+            }
+            if (this.isVisible(box)) {
+              this.show(box);
+              continue;
+            }
+            results.push(box);
+          }
+          return results;
+        }).call(this);
+        if (!(this.boxes.length || this.config.live)) {
+          return this.stop();
+        }
+      }
+    };
+
+    WOW.prototype.offsetTop = function(element) {
+      var top;
+      while (element.offsetTop === void 0) {
+        element = element.parentNode;
+      }
+      top = element.offsetTop;
+      while (element = element.offsetParent) {
+        top += element.offsetTop;
+      }
+      return top;
+    };
+
+    WOW.prototype.isVisible = function(box) {
+      var bottom, offset, top, viewBottom, viewTop;
+      offset = box.getAttribute('data-wow-offset') || this.config.offset;
+      viewTop = (this.config.scrollContainer && this.config.scrollContainer.scrollTop) || window.pageYOffset;
+      viewBottom = viewTop + Math.min(this.element.clientHeight, this.util().innerHeight()) - offset;
+      top = this.offsetTop(box);
+      bottom = top + box.clientHeight;
+      return top <= viewBottom && bottom >= viewTop;
+    };
+
+    WOW.prototype.util = function() {
+      return this._util != null ? this._util : this._util = new Util();
+    };
+
+    WOW.prototype.disabled = function() {
+      return !this.config.mobile && this.util().isMobile(navigator.userAgent);
+    };
+
+    return WOW;
+
+  })();
+
+}).call(this);
+
+
+/***/ }),
+
 /***/ "./src/js/main.js":
 /*!************************!*\
   !*** ./src/js/main.js ***!
@@ -22099,12 +22623,23 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
 /* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
-/* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
-/* harmony import */ var _modules_pulseBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/pulseBtn */ "./src/js/modules/pulseBtn.js");
-/* harmony import */ var _modules_currentDate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/currentDate */ "./src/js/modules/currentDate.js");
-/* harmony import */ var _modules_currentDate__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_modules_currentDate__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _modules_anchor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/anchor */ "./src/js/modules/anchor.js");
-/* harmony import */ var _modules_phonemask__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/phonemask */ "./src/js/modules/phonemask.js");
+/* harmony import */ var _modules_wowMobile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/wowMobile */ "./src/js/modules/wowMobile.js");
+/* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
+/* harmony import */ var _modules_pulseBtn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/pulseBtn */ "./src/js/modules/pulseBtn.js");
+/* harmony import */ var _modules_currentDate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/currentDate */ "./src/js/modules/currentDate.js");
+/* harmony import */ var _modules_currentDate__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_modules_currentDate__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _modules_anchor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/anchor */ "./src/js/modules/anchor.js");
+/* harmony import */ var _modules_phonemask__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/phonemask */ "./src/js/modules/phonemask.js");
+/* harmony import */ var _modules_menuBtn__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/menuBtn */ "./src/js/modules/menuBtn.js");
+/* harmony import */ var _modules_shopDots__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/shopDots */ "./src/js/modules/shopDots.js");
+/* harmony import */ var _modules_callbackWidget__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/callbackWidget */ "./src/js/modules/callbackWidget.js");
+/* harmony import */ var _modules_focusModalsInput__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/focusModalsInput */ "./src/js/modules/focusModalsInput.js");
+
+
+
+
+
+
 
 
 
@@ -22113,7 +22648,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.addEventListener('DOMContentLoaded', function () {
-  Object(_modules_modals__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  'use strict';
+
+  Object(_modules_modals__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  Object(_modules_menuBtn__WEBPACK_IMPORTED_MODULE_8__["default"])('.aside__nav', '.menu__btn');
+  Object(_modules_shopDots__WEBPACK_IMPORTED_MODULE_9__["default"])('.surfboard-info__dots');
+  Object(_modules_focusModalsInput__WEBPACK_IMPORTED_MODULE_11__["default"])('.info-box__data');
+  Object(_modules_callbackWidget__WEBPACK_IMPORTED_MODULE_10__["default"])();
 });
 
 /***/ }),
@@ -22221,53 +22762,101 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
 
 
-jquery__WEBPACK_IMPORTED_MODULE_1___default()(function () {
-  jquery__WEBPACK_IMPORTED_MODULE_1___default()('<div class="quantity-nav"><div class="quantity-button quantity-up"><img src="img/sleep/slider/plus.svg" alt=""></div><div class="quantity-button quantity-down"><img src="img/sleep/slider/minus.svg" alt=""></div></div>').insertAfter('.quantity input');
-  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.quantity').each(function () {
-    var spinner = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this),
-        input = spinner.find('input[type="number"]'),
-        btnUp = spinner.find('.quantity-up'),
-        btnDown = spinner.find('.quantity-down'),
-        min = input.attr('min'),
-        max = input.attr('max');
-    btnUp.click(function () {
-      var oldValue = parseFloat(input.val());
+jquery__WEBPACK_IMPORTED_MODULE_1___default()('<div class="quantity-nav"><div class="quantity-button quantity-up"><img src="img/sleep/slider/plus.svg" alt=""></div><div class="quantity-button quantity-down"><img src="img/sleep/slider/minus.svg" alt=""></div></div>').insertAfter('.quantity input');
+jquery__WEBPACK_IMPORTED_MODULE_1___default()('.quantity').each(function () {
+  var spinner = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this),
+      input = spinner.find('input[type="number"]'),
+      btnUp = spinner.find('.quantity-up'),
+      btnDown = spinner.find('.quantity-down'),
+      min = input.attr('min'),
+      max = input.attr('max');
+  btnUp.click(function () {
+    var oldValue = parseFloat(input.val());
 
-      if (oldValue >= max) {
-        var newVal = oldValue;
-      } else {
-        var newVal = oldValue + 1;
-      }
+    if (oldValue >= max) {
+      var newVal = oldValue;
+    } else {
+      var newVal = oldValue + 1;
+    }
 
-      spinner.find("input").val(newVal);
-      spinner.find("input").trigger("change");
-    });
-    btnDown.click(function () {
-      var oldValue = parseFloat(input.val());
-
-      if (oldValue <= min) {
-        var newVal = oldValue;
-      } else {
-        var newVal = oldValue - 1;
-      }
-
-      spinner.find("input").val(newVal);
-      spinner.find("input").trigger("change");
-    });
+    spinner.find("input").val(newVal);
+    spinner.find("input").trigger("change");
   });
-  var sum = jquery__WEBPACK_IMPORTED_MODULE_1___default()('.nights').val() * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum').data('nights') + (jquery__WEBPACK_IMPORTED_MODULE_1___default()('.guests').val() - 1) * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum').data('guests');
-  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum').html('$' + sum);
-  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.quantity-button').on('click', function () {
-    var parents = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).parents('.content-slider__info');
-    var sum = jquery__WEBPACK_IMPORTED_MODULE_1___default()('.nights', parents).val() * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).data('nights') + (jquery__WEBPACK_IMPORTED_MODULE_1___default()('.guests', parents).val() - 1) * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).data('guests');
-    jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).html('$' + sum);
-  });
-  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.quantity').each(function () {
-    var parents = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).parents('.content-slider__info');
-    var sum = jquery__WEBPACK_IMPORTED_MODULE_1___default()('.nights', parents).val() * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).data('nights') + (jquery__WEBPACK_IMPORTED_MODULE_1___default()('.guests', parents).val() - 1) * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).data('guests');
-    jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).html('$' + sum);
+  btnDown.click(function () {
+    var oldValue = parseFloat(input.val());
+
+    if (oldValue <= min) {
+      var newVal = oldValue;
+    } else {
+      var newVal = oldValue - 1;
+    }
+
+    spinner.find("input").val(newVal);
+    spinner.find("input").trigger("change");
   });
 });
+var sum = jquery__WEBPACK_IMPORTED_MODULE_1___default()('.nights').val() * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum').data('nights') + (jquery__WEBPACK_IMPORTED_MODULE_1___default()('.guests').val() - 1) * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum').data('guests');
+jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum').html('$' + sum);
+jquery__WEBPACK_IMPORTED_MODULE_1___default()('.quantity-button').on('click', function () {
+  var parents = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).parents('.content-slider__info');
+  var sum = jquery__WEBPACK_IMPORTED_MODULE_1___default()('.nights', parents).val() * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).data('nights') + (jquery__WEBPACK_IMPORTED_MODULE_1___default()('.guests', parents).val() - 1) * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).data('guests');
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).html('$' + sum);
+});
+jquery__WEBPACK_IMPORTED_MODULE_1___default()('.quantity').each(function () {
+  var parents = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).parents('.content-slider__info');
+  var sum = jquery__WEBPACK_IMPORTED_MODULE_1___default()('.nights', parents).val() * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).data('nights') + (jquery__WEBPACK_IMPORTED_MODULE_1___default()('.guests', parents).val() - 1) * jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).data('guests');
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.sum', parents).html('$' + sum);
+});
+
+/***/ }),
+
+/***/ "./src/js/modules/callbackWidget.js":
+/*!******************************************!*\
+  !*** ./src/js/modules/callbackWidget.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.slice */ "./node_modules/core-js/modules/es.array.slice.js");
+/* harmony import */ var core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var callbackWidget = function callbackWidget() {
+  var btnWidget = function btnWidget(BtnSelector, MenuSelector) {
+    var menu = document.querySelector(MenuSelector),
+        btn = document.querySelector(BtnSelector);
+    btn.addEventListener('click', function (e) {
+      if (e.target) {
+        e.preventDefault();
+      }
+
+      menu.classList.toggle(MenuSelector.slice(1) + '__active');
+      btn.classList.toggle(BtnSelector.slice(1) + '__active');
+    });
+  };
+
+  var callbackPlugin = function callbackPlugin(BtnSelector, ModalSelector1, ModalSelector2) {
+    var modalSelector1 = document.querySelector(ModalSelector1),
+        modalSelector2 = document.querySelector(ModalSelector2),
+        btnQuestion = document.querySelector(BtnSelector);
+    btnQuestion.addEventListener('click', function (e) {
+      if (e.target) {
+        e.preventDefault();
+      }
+
+      modalSelector1.classList.toggle('active');
+      modalSelector2.classList.remove('active');
+    });
+  };
+
+  btnWidget('.btn-pulse', '.menu-callback');
+  callbackPlugin('.btn-question', '.form-wrapper__feedback', '.form-wrapper__callback');
+  callbackPlugin('.btn-phone', '.form-wrapper__callback', '.form-wrapper__feedback');
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (callbackWidget);
 
 /***/ }),
 
@@ -22284,6 +22873,62 @@ var month = date.getMonth() + 1;
 var year = date.getFullYear();
 document.getElementById('day').innerHTML = day;
 document.getElementById('m_y').innerHTML = month + ' | ' + year;
+
+/***/ }),
+
+/***/ "./src/js/modules/focusModalsInput.js":
+/*!********************************************!*\
+  !*** ./src/js/modules/focusModalsInput.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var focusModalsInput = function focusModalsInput(InfoSelector) {
+  var info = document.querySelectorAll(InfoSelector);
+  info.forEach(function (item) {
+    item.addEventListener('focus', function () {
+      item.parentNode.classList.add('focus');
+    });
+    item.addEventListener('blur', function () {
+      if (item.value == '') {
+        item.parentNode.classList.remove('focus');
+      }
+    });
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (focusModalsInput);
+
+/***/ }),
+
+/***/ "./src/js/modules/menuBtn.js":
+/*!***********************************!*\
+  !*** ./src/js/modules/menuBtn.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var menuBtn = function menuBtn(menuSelector, BtnSelector) {
+  var menu = document.querySelector(menuSelector),
+      btn = document.querySelector(BtnSelector);
+  btn.addEventListener('click', function () {
+    menu.classList.toggle('active');
+    btn.classList.toggle('active');
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (menuBtn);
 
 /***/ }),
 
@@ -22304,7 +22949,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var modals = function modals() {
-  function bindModal(triggerSelector, modalSelector, closeSelector) {
+  var bindModal = function bindModal(triggerSelector, modalSelector, closeSelector) {
     var trigger = document.querySelectorAll(triggerSelector),
         modal = document.querySelector(modalSelector),
         close = document.querySelector(closeSelector);
@@ -22314,31 +22959,40 @@ var modals = function modals() {
           e.preventDefault();
         }
 
-        modal.style.display = "block";
-        document.body.style.overflow = "hidden"; //document.body.classList.add('modal-open');
+        modal.classList.remove('bounceOutDown');
+        modal.classList.add('zoomIn');
+        window.setTimeout(function () {
+          modal.style.display = "block";
+        }, 500);
       });
     });
     close.addEventListener('click', function () {
-      modal.style.display = "none";
-      document.body.style.overflow = ""; //document.body.classList.remove('modal-open');
+      modal.classList.add('bounceOutDown');
+      modal.classList.remove('zoomIn');
+      window.setTimeout(function () {
+        modal.style.display = "none";
+      }, 500);
     });
     modal.addEventListener('click', function (e) {
       if (e.target === modal) {
-        modal.style.display = "none";
-        document.body.style.overflow = ""; //document.body.classList.remove('modal-open');
+        modal.classList.add('bounceOutDown');
+        modal.classList.remove('zoomIn');
+        window.setTimeout(function () {
+          modal.style.display = "none";
+        }, 500);
       }
     });
-  }
+  };
 
-  function showModalByTime(selector, time) {
+  var showModalByTime = function showModalByTime(selector, time) {
     setTimeout(function () {
       document.querySelector(selector).style.display = 'block';
       document.body.style.overflow = "hidden";
     }, time);
-  }
+  };
 
   bindModal('.shop-btn', '.overlay', '.overlay .popup-close');
-  showModalByTime('.overlay', 3000);
+  showModalByTime('.overlay', 60000);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (modals);
@@ -22354,13 +23008,21 @@ var modals = function modals() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var imask__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! imask */ "./node_modules/imask/esm/index.js");
 
-var phonemask = document.querySelector('.popup-form__input');
-var maskOptions = {
-  mask: '+{7}(000)000-00-00'
-};
-var mask = Object(imask__WEBPACK_IMPORTED_MODULE_0__["default"])(phonemask, maskOptions);
+
+
+var phonemask = document.querySelectorAll('.popup-form__input');
+phonemask.forEach(function (item) {
+  var maskOptions = {
+    mask: '+{7}(000)000-00-00'
+  };
+  var mask = Object(imask__WEBPACK_IMPORTED_MODULE_2__["default"])(item, maskOptions);
+});
 /* harmony default export */ __webpack_exports__["default"] = (phonemask);
 
 /***/ }),
@@ -22400,6 +23062,35 @@ function addElement(e) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (modalBtn);
+
+/***/ }),
+
+/***/ "./src/js/modules/shopDots.js":
+/*!************************************!*\
+  !*** ./src/js/modules/shopDots.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var shopDots = function shopDots(BtnSelector) {
+  var btn = document.querySelectorAll(BtnSelector);
+  btn.forEach(function (item) {
+    item.addEventListener('click', function () {
+      item.classList.toggle('active');
+    });
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (shopDots);
 
 /***/ }),
 
@@ -22508,6 +23199,33 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('.content-slider, .shop-slider').s
   slidesToScroll: 1,
   prevArrow: '<img class="slider-arrows slider-arrows__left" src="img/header/pagination/arrow-left.svg" alt=""></img>',
   nextArrow: '<img class="slider-arrows slider-arrows__right" src="img/header/pagination/arrow-right.svg" alt=""></img>'
+});
+
+/***/ }),
+
+/***/ "./src/js/modules/wowMobile.js":
+/*!*************************************!*\
+  !*** ./src/js/modules/wowMobile.js ***!
+  \*************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var wowjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! wowjs */ "./node_modules/wowjs/dist/wow.js");
+/* harmony import */ var wowjs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(wowjs__WEBPACK_IMPORTED_MODULE_0__);
+
+var isMobile = false; // check width's screen
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (document.body.clientWidth <= 480) {
+    isMobile = true;
+  } // flag >md
+
+
+  if (!isMobile) {
+    new wowjs__WEBPACK_IMPORTED_MODULE_0___default.a.WOW().init();
+  }
 });
 
 /***/ })

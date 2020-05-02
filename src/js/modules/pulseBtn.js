@@ -21,6 +21,4 @@ function addElement(e) {
     this.appendChild(addDiv);
 }
 
-
-
 export default modalBtn;

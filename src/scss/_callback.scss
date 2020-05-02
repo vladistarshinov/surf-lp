@@ -1,6 +1,7 @@
 /* .form-wrapper__callback.active { */
 .form-wrapper__callback.active {
     display: block;
+    z-index: 20;
 
     .form-toggle__callback {
         display: block;

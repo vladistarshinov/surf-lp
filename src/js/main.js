@@ -11,6 +11,7 @@ import shopDots from './modules/shopDots';
 import callbackWidget from './modules/callbackWidget';
 import focusModalsInput from './modules/focusModalsInput';
 import wowMobile from './modules/wowMobile';
+import forms from './modules/forms';
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -19,4 +20,5 @@ window.addEventListener('DOMContentLoaded', () => {
     shopDots('.surfboard-info__dots');
     focusModalsInput('.info-box__data');
     callbackWidget();
+    forms();
 })

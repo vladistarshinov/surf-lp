@@ -7,10 +7,10 @@ const gulp = require('gulp'),
     rename = require('gulp-rename'),
     del = require('del'),
     imagemin = require('gulp-imagemin'),
-    webpack = require("webpack-stream"),
+    webpack = require('webpack-stream'),
     autoprefixer = require('gulp-autoprefixer');
 
-    const dist = "./dist/";
+    const dist = "dist/";
 
 gulp.task('clean', async function(){
   del.sync('dist')
@@ -132,7 +132,11 @@ gulp.task('export', function(){
 
   let BuildImg = gulp.src('src/img/**/*.*')
     .pipe(gulp.dest('dist/img'));   
+
+  let BuildPhp = gulp.src('src/php/**/*.php')
+    .pipe(gulp.dest('dist/php')); 
 });
+
 
 gulp.task('browser-sync', function() {
   browserSync.init({

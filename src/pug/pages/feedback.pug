@@ -8,19 +8,19 @@ wrapper
       form.feedback-form.dark-bg(style='background: url(img/feedback/feed-bg.jpg);', action="#")
         .info-box
           label.info-box__header Your name
-          input.info-box__data(type='text', required)
+          input.info-box__data(type='text', name='user_name', required)
         // /.info-box
         .info-box
           label.info-box__header E-mail
-          input.info-box__data(type='email', required)
+          input.info-box__data(type='email', name='email', required)
         // /.info-box
         .info-box
           label.info-box__header Number
-          input.info-box__data.popup-form__input(type='tel', required)
+          input.info-box__data.popup-form__input(type='tel', name='phone', required)
         // /.info-box
         .info-box
           label.info-box__header Message
-          textarea.info-box__data(required)
+          textarea.info-box__data(name='message', required)
         // /.info-box
         .info-box
           label.checkbox.checkbox-option

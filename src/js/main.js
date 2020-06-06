@@ -12,6 +12,7 @@ import callbackWidget from './modules/callbackWidget';
 import focusModalsInput from './modules/focusModalsInput';
 import wowMobile from './modules/wowMobile';
 import forms from './modules/forms';
+import blog from './modules/blog';
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -21,4 +22,5 @@ window.addEventListener('DOMContentLoaded', () => {
     focusModalsInput('.info-box__data');
     callbackWidget();
     forms();
+    blog();
 })

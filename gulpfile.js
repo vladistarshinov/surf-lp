@@ -7,13 +7,17 @@ const gulp = require('gulp'),
     rename = require('gulp-rename'),
     del = require('del'),
     imagemin = require('gulp-imagemin'),
+    imageminJpegRecompress = require('imagemin-jpeg-recompress'),
+    pngquant = require('imagemin-pngquant'),
+    cache = require('gulp-cache'),
     webpack = require('webpack-stream'),
     autoprefixer = require('gulp-autoprefixer');
 
+    //const dist = "C:/openserver/ospanel/domains/surf-lp";
     const dist = "dist/";
 
 gulp.task('clean', async function(){
-  del.sync('dist')
+  del.sync(dist)
 })
 
 gulp.task('pug', function() {
@@ -115,33 +119,38 @@ gulp.task("build-prod-js", function() {
 
 gulp.task('img-compress', function() {
 	return gulp.src('src/img/**/*') 
-    .pipe(imagemin())
-		.pipe(gulp.dest('dist/img')) 
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant()],
+      interlaced: true
+    }))
+		.pipe(gulp.dest(dist + '/img')) 
 });
 
 
 gulp.task('export', function(){
   let buildHtml = gulp.src('src/**/*.html')
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(dist));
 
   let BuildCss = gulp.src('src/css/**/*.css')
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest(dist + '/css'));
     
   let BuildFonts = gulp.src('src/fonts/**/*.*')
-    .pipe(gulp.dest('dist/fonts'));
+    .pipe(gulp.dest(dist + 'fonts'));
 
   let BuildImg = gulp.src('src/img/**/*.*')
-    .pipe(gulp.dest('dist/img'));   
+    .pipe(gulp.dest(dist + '/img'));   
 
   let BuildPhp = gulp.src('src/php/**/*.php')
-    .pipe(gulp.dest('dist/php')); 
+    .pipe(gulp.dest(dist + '/php')); 
 });
 
 
 gulp.task('browser-sync', function() {
   browserSync.init({
       server: {
-          baseDir: "dist/"
+          baseDir: dist
       }
   });
 });

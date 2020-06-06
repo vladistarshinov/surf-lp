@@ -205,6 +205,33 @@
 <!-- /.header-->
 <!-- Сentering content on large screens-->
 <div class="container">
+  <section class="blog hide">
+    <div class="section-heading"><span class="section-name"><span>Top #8 beaches</span>
+        <h3>Top #8 beaches</h3></span></div>
+    <!-- /.section-heading-->
+    <div class="cards cards-blog"></div>
+    <!-- /.cards-->
+  </section>
+  <!-- /.blog-->
+  <section class="beach hide">
+    <div class="section-heading"><a class="btn-from-description"><img src="img/header/pagination/arrow-left.svg"></a>
+      <h2 class="section-title beach-title">Cloud Nine</h2>
+      <div class="card-info">
+        <div class="rating">4.5</div>
+        <div class="category category-menu">Siargao | Phillipines</div>
+      </div>
+      <!-- /.card-info-->
+    </div>
+    <!-- /.section-heading-->
+    <div class="cards cards-beach"></div>
+    <!-- /.cards-->
+    <div class="img-descr"><img class="cards-img" src=""></div>
+    <div class="card-description"></div>
+    <!-- /.card-description-->
+  </section>
+  <!-- /.menu-->
+  <div class="blog__btn"><a class="btn btn-from-blog hide" href="">return <span class="btn-click">back</span></a></div>
+  <!-- /.blog__btn-->
   <section class="surf" id="surf">
     <div class="block-name wow fadeInLeft" data-wow-offset="400"><span><span>surf</span>
         <h3>surf</h3></span></div>
@@ -492,7 +519,7 @@
           <div class="surf-slider__item">
             <div class="surf-slider__item-title">cloud nine</div>
             <div class="surf-slider__item-area">siargao <span>|</span> philippines</div>
-            <div class="surf-slider__item-btn"><a class="btn" href="#">view <span class="btn-click">surf</span></a></div>
+            <div class="surf-slider__item-btn"><a class="btn btn-to-blog" href="#">view <span class="btn-click">blog</span></a></div>
           </div>
           <!-- /.surf-slider__item-->
         </div>
@@ -504,7 +531,7 @@
           <div class="surf-slider__item">
             <div class="surf-slider__item-title">malibu beach</div>
             <div class="surf-slider__item-area">california <span>|</span> usa</div>
-            <div class="surf-slider__item-btn"><a class="btn" href="#">view <span class="btn-click">surf</span></a></div>
+            <div class="surf-slider__item-btn"><a class="btn btn-to-blog" href="#">view <span class="btn-click">blog</span></a></div>
           </div>
           <!-- /.surf-slider__item-->
         </div>
@@ -516,7 +543,7 @@
           <div class="surf-slider__item">
             <div class="surf-slider__item-title">garbanzo beach</div>
             <div class="surf-slider__item-area">garbanzo <span>|</span> bagamas</div>
-            <div class="surf-slider__item-btn"><a class="btn" href="#">view <span class="btn-click">surf</span></a></div>
+            <div class="surf-slider__item-btn"><a class="btn btn-to-blog" href="#">view <span class="btn-click">blog</span></a></div>
           </div>
           <!-- /.surf-slider__item-->
         </div>
@@ -528,7 +555,7 @@
           <div class="surf-slider__item">
             <div class="surf-slider__item-title">pecado beach</div>
             <div class="surf-slider__item-area">rio de janeiro <span>|</span> brazilia</div>
-            <div class="surf-slider__item-btn"><a class="btn" href="#">view <span class="btn-click">surf</span></a></div>
+            <div class="surf-slider__item-btn"><a class="btn btn-to-blog" href="#">view <span class="btn-click">blog</span></a></div>
           </div>
           <!-- /.surf-slider__item-->
         </div>
@@ -540,7 +567,7 @@
           <div class="surf-slider__item">
             <div class="surf-slider__item-title">vueux boucau</div>
             <div class="surf-slider__item-area">marseille <span>|</span> france</div>
-            <div class="surf-slider__item-btn"><a class="btn" href="#">view <span class="btn-click">surf</span></a></div>
+            <div class="surf-slider__item-btn"><a class="btn btn-to-blog" href="#">view <span class="btn-click">blog</span></a></div>
           </div>
           <!-- /.surf-slider__item-->
         </div>
@@ -552,7 +579,7 @@
           <div class="surf-slider__item">
             <div class="surf-slider__item-title">buffalo bay</div>
             <div class="surf-slider__item-area">knysna<span>|</span> sa</div>
-            <div class="surf-slider__item-btn"><a class="btn" href="#">view <span class="btn-click">surf</span></a></div>
+            <div class="surf-slider__item-btn"><a class="btn btn-to-blog" href="#">view <span class="btn-click">blog</span></a></div>
           </div>
           <!-- /.surf-slider__item-->
         </div>
@@ -564,7 +591,7 @@
           <div class="surf-slider__item">
             <div class="surf-slider__item-title">varka beach</div>
             <div class="surf-slider__item-area">goa <span>|</span> india</div>
-            <div class="surf-slider__item-btn"><a class="btn" href="#">view <span class="btn-click">surf</span></a></div>
+            <div class="surf-slider__item-btn"><a class="btn btn-to-blog" href="#">view <span class="btn-click">blog</span></a></div>
           </div>
           <!-- /.surf-slider__item-->
         </div>
@@ -576,7 +603,7 @@
           <div class="surf-slider__item">
             <div class="surf-slider__item-title">airlie beach</div>
             <div class="surf-slider__item-area">queensland <span>|</span> australia</div>
-            <div class="surf-slider__item-btn"><a class="btn" href="#">view <span class="btn-click">surf</span></a></div>
+            <div class="surf-slider__item-btn"><a class="btn btn-to-blog" href="#">view <span class="btn-click">blog</span></a></div>
           </div>
           <!-- /.surf-slider__item-->
         </div>
@@ -1814,7 +1841,7 @@
              to purchase surfing equipment!</span>
           <label class="popup-form__label"><span>Enter </span>your phone number</label>
           <input class="popup-form__input" type="tel" name="phone" placeholder="7(999)999-99-99" required>
-          <button class="button popup-form__btn btn-click">Submit</button><small class="popup-form__note"><span>*We </span>will call you back within an hour</small>
+          <button class="button popup-form__btn btn-click">Submit</button><small class="popup-form__note"><span class="agreement">* I <span class="agreement__main"> agree to the processing of my </span><a href="#">personal data </a><span class="agreement__main"> by clicking on the Submit button </span></span></small>
         </div>
         <!-- /.popup-form__header-->
       </form>

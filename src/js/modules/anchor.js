@@ -1,4 +1,4 @@
-const anchor = [...document.querySelectorAll('a[href*="#"]')],
+const anchor = [...document.querySelectorAll('a[href^="#"]')],
       animationTime = 1500,
       framesCount = 100;
 

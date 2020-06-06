@@ -1524,3 +1524,98 @@
     }
 
 }
+
+///////////////////////////////////////  Media BLOG ////////////////////////////////////////////////////
+
+
+@media (max-width: 1020px) {
+
+    .card {
+        flex-basis: 45%;
+    }
+
+    .beach .card-description {
+        width: 90%;
+    }
+
+    .beach .cards-img {
+        height: 50vh;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .card {
+        flex-basis: 80%;
+    }
+
+    .beach .cards-img {
+        width: 70vw;
+    }
+
+    .section-heading .section-name h3 {
+        font-size: 40px;
+    }
+
+    .section-heading .section-name {
+        font-size: 65px;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
+
+}
+
+@media (max-width: 570px) {
+
+    .section-heading {
+        display: block;
+    }
+
+    .beach .card-description {
+        width: 85%;
+        margin-left: 42px;
+    }
+
+    .beach .cards-img {
+        width: 85vw;
+    }
+
+}
+
+@media (max-width: 460px) {
+
+    .beach .cards-img {
+        height: 35vh;
+    }
+
+    .beach .card-description {
+        margin-left: 35px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .card-title {
+        font-size: 14px;
+    }
+
+    .beach .card-description {
+        margin-left: 30px;
+    }
+
+    .price, .category {
+        font-size: 14px;
+    }
+
+    .section-heading .section-name h3 {
+        font-size: 27px;
+    }
+
+    .section-heading .section-name {
+        font-size: 37px;
+    }
+
+}

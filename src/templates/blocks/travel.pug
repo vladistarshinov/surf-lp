@@ -1,0 +1,429 @@
+include ../common/bem-mixin.pug
+
++b.SECTION.travel.content#airplanes
+  +b.container
+    +b.block-name.wow.fadeInLeft(data-wow-offset='400')
+      +b.SPAN
+        +b.SPAN travel
+        +b.H3 travel
+    // /.travel-title
+    +b.content-slider
+      +e.item
+        +e.img(style='background-image: url(../src/assets/images/travel/slider/travel-bg-1.png);')
+          +e.headtitle
+            +b.wow.fadeInRight(data-wow-offset='400').info-subtitle__
+              +b.subtitle-line_left shore
+              +e.description
+                | cloud nine
+                +b.SPAN |
+                |  phillipines
+            // /.info-subtitle
+          // /.content-slider__headtitle
+        // /.content-slider__img
+        +b.content-slider__maintitle.wow.zoomInUp(data-wow-offset='100', data-wow-duration='2s', style='background-image: url(../src/assets/images/travel/slider/plane-slide-1.png);')
+          +b.info-title
+            +b.subtitle-line_right airline
+            +e.description
+              | virgin australia 
+              img(src='../assets/images/travel/slider/avia-logo-1.svg', alt='')
+          // /.info-title
+        // /.content-slider__maintitle
+        +e.info
+          +b.content-slider__inform.wow.fadeInUp(data-wow-offset = '200', data-wow-delay='.2s')
+            +b.content-slider__inform-subtitle destination
+            +b.content-slider__inform-title
+              | siargao
+              +b.BR
+              | phillipines
+          // /.content-slider__inform
+          +b.content-slider__inform.wow.fadeInUp(data-wow-offset = '200', data-wow-delay='.4s')
+            +b.content-slider__inform-subtitle distance
+            +b.content-slider__inform-title 8,175 miles
+          // /.content-slider__inform
+          +b.content-slider__inform.wow.fadeInUp(data-wow-offset = '200', data-wow-delay='.6s')
+            +b.content-slider__inform-subtitle travel time
+            +b.content-slider__inform-title
+              | 26 hours 
+              +b.BR
+              |  12 minutes
+          // /.content-slider__inform
+          +b.content-slider__inform.wow.fadeInUp(data-wow-offset = '200', data-wow-delay='.8s')
+            +b.content-slider__inform-subtitle  pricing
+            +b.content-slider__inform-title
+              | $2,138
+              +b.SMALL round trip
+          // /.content-slider__inform
+        // /.content-slider__info
+        +e.btn
+          +b.A.btn(href='#')
+            | book 
+            +b.SPAN.btn-click flight
+        // /.content-slider__btn
+      // /.content-slider__item
+      +e.item
+        +e.img(style='background-image: url(../src/assets/images/travel/slider/travel-bg-2.png);')
+          +e.headtitle
+            +b.info-subtitle
+              +b.subtitle-line_left shore
+              +e.description
+                | malibu beach 
+                +b.SPAN |
+                |  usa
+            // /.info-subtitle
+          // /.content-slider__headtitle
+        // /.content-slider__img
+        +e.maintitle(style='background-image: url(../src/assets/images/travel/slider/plane-slide-2.png);')
+          +b.info-title
+            +b.subtitle-line_right airline
+            +e.description
+              | cambodian airways 
+              +b.img(src='../assets/images/travel/slider/avia-logo-2.svg', alt='')
+          // /.info-title
+        // /.content-slider__maintitle
+        +e.info
+          +e.inform
+            +e.inform-subtitle destination
+            +e.inform-title
+              | california
+              +b.BR
+              | usa
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle distance
+            +e.inform-title 6,021 miles
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle travel time
+            +e.inform-title
+              | 20 hours 
+              +b.BR
+              |  48 minutes
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle  pricing
+            +e.inform-title
+              | $1,798 
+              +b.SMALL round trip
+          // /.content-slider__inform
+        // /.content-slider__info
+        +e.btn
+          +b.A.btn(href='#')
+            | book 
+            +b.SPAN.btn-click flight
+        // /.content-slider__btn
+      // /.content-slider__item
+      +e.item
+        +e.img(style='background-image: url(../src/assets/images/travel/slider/travel-bg-3.png);')
+          +e.headtitle
+            +b.info-subtitle
+              +b.subtitle-line_left shore
+              +e.description
+                | garbanzo beach 
+                +b.SPAN |
+                |  bagamas
+            // /.info-subtitle
+          // /.content-slider__headtitle
+        // /.content-slider__img
+        +e.maintitle(style='background-image: url(../src/assets/images/travel/slider/plane-slide-3.png);')
+          +b.info-title
+            +b.subtitle-line_right airline
+            +e.description
+              | aeroflot airways
+              +b.img(src='../assets/images/travel/slider/avia-logo-3.svg', alt='')
+          // /.info-title
+        // /.content-slider__maintitle
+        +e.info
+          +e.inform
+            +e.inform-subtitle destination
+            +e.inform-title
+              | garbanzo
+              +b.BR
+              | bahamas
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle distance
+            +e.inform-title 5,178 miles
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle travel time
+            +e.inform-title
+              | 18 hours 
+              +b.BR
+              |  44 minutes
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle  pricing
+            +e.inform-title
+              | $1,564 
+              +b.SMALL round trip
+          // /.content-slider__inform
+        // /.content-slider__info
+        +e.btn
+          +b.A.btn(href='#')
+            | book 
+            +b.SPAN.btn-click flight
+        // /.content-slider__btn
+      // /.content-slider__item
+      +e.item
+        +e.img(style='background-image: url(../src/assets/images/travel/slider/travel-bg-4.png);')
+          +e.headtitle
+            +b.info-subtitle
+              +b.subtitle-line_left shore
+              +e.description
+                | pecado beach 
+                +b.SPAN |
+                |  brasil
+            // /.info-subtitle
+          // /.content-slider__headtitle
+        // /.content-slider__img
+        +e.maintitle(style='background-image: url(../src/assets/images/travel/slider/plane-slide-4.png);')
+          +b.info-title
+            +b.subtitle-line_right airline
+            +e.description
+              | fuerza airways
+              +b.img(src='../assets/images/travel/slider/avia-logo-4.svg', alt='')
+          // /.info-title
+        // /.content-slider__maintitle
+        +e.info
+          +e.inform
+            +e.inform-subtitle destination
+            +e.inform-title
+              | rio de janeiro
+              +b.BR
+              | brasil
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle distance
+            +e.inform-title 5,932 miles
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle travel time
+            +e.inform-title
+              | 20 hours 
+              +b.BR
+              |  12 minutes
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle  pricing
+            +e.inform-title
+              | $1,712
+              +b.SMALL round trip
+          // /.content-slider__inform
+        // /.content-slider__info
+        +e.btn
+          +b.A.btn(href='#')
+            | book 
+            +b.SPAN.btn-click flight
+        // /.content-slider__btn
+      // /.content-slider__item
+      +e.item
+        +e.img(style='background-image: url(../src/assets/images/travel/slider/travel-bg-5.png);')
+          +e.headtitle
+            +b.info-subtitle
+              +b.subtitle-line_left shore
+              +e.description
+                | vueux boucao  
+                +b.SPAN |
+                |  france
+            // /.info-subtitle
+          // /.content-slider__headtitle
+        // /.content-slider__img
+        +e.maintitle(style='background-image: url(../src/assets/images/travel/slider/plane-slide-5.png);')
+          +b.info-title
+            +b.subtitle-line_right airline
+            +e.description
+              | lufthansa airways
+              +b.img(src='../assets/images/travel/slider/avia-logo-5.svg', alt='')
+          // /.info-title
+        // /.content-slider__maintitle
+        +e.info
+          +e.inform
+            +e.inform-subtitle destination
+            +e.inform-title
+              | marseille
+              +b.BR
+              | france
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle distance
+            +e.inform-title 3,871 miles
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle travel time
+            +e.inform-title
+              | 14 hours
+              +b.BR
+              |  18 minutes
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle  pricing
+            +e.inform-title
+              | $1,233
+              +b.SMALL round trip
+          // /.content-slider__inform
+        // /.content-slider__info
+        +e.btn
+          +b.A.btn(href='#')
+            | book 
+            +b.SPAN.btn-click flight
+        // /.content-slider__btn
+      // /.content-slider__item
+      +e.item
+        +e.img(style='background-image: url(../src/assets/images/travel/slider/travel-bg-6.png);')
+          +e.headtitle
+            +b.info-subtitle
+              +b.subtitle-line_left shore
+              +e.description
+                | buffalo bay
+                +b.SPAN |
+                |  south africa
+            // /.info-subtitle
+          // /.content-slider__headtitle
+        // /.content-slider__img
+        +e.maintitle(style='background-image: url(../src/assets/images/travel/slider/plane-slide-6.png);')
+          +b.info-title
+            +b.subtitle-line_right airline
+            +e.description
+              | s7 airlines
+              +b.img(src='../assets/images/travel/slider/avia-logo-6.svg', alt='')
+          // /.info-title
+        // /.content-slider__maintitle
+        +e.info
+          +e.inform
+            +e.inform-subtitle destination
+            +e.inform-title
+              | knysna
+              +b.BR
+              | south africa
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle distance
+            +e.inform-title 6,233 miles
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle travel time
+            +e.inform-title
+              | 21 hours 
+              +b.BR
+              |  58 minutes
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle  pricing
+            +e.inform-title
+              | $1,883
+              +b.SMALL round trip
+          // /.content-slider__inform
+        // /.content-slider__info
+        +e.btn
+          +b.A.btn(href='#')
+            | book 
+            +b.SPAN.btn-click flight
+        // /.content-slider__btn
+      // /.content-slider__item
+      +e.item
+        +e.img(style='background-image: url(../src/assets/images/travel/slider/travel-bg-7.png);')
+          +e.headtitle
+            +b.info-subtitle
+              +b.subtitle-line_left shore
+              +e.description
+                | varka beach 
+                +b.SPAN |
+                |  india
+            // /.info-subtitle
+          // /.content-slider__headtitle
+        // /.content-slider__img
+        +e.maintitle(style='background-image: url(../src/assets/images/travel/slider/plane-slide-7.png);')
+          +b.info-title
+            +b.subtitle-line_right airline
+            +e.description
+              | air union airways
+              +b.img(src='../assets/images/travel/slider/avia-logo-7.svg', alt='')
+          // /.info-title
+        // /.content-slider__maintitle
+        +e.info
+          +e.inform
+            +e.inform-subtitle destination
+            +e.inform-title
+              | goa
+              +b.BR
+              | india
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle distance
+            +e.inform-title 4,988 miles
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle travel time
+            +e.inform-title
+              | 17 hours
+              +b.BR
+              |  25 minutes
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle  pricing
+            +e.inform-title
+              | $1,442
+              +b.SMALL round trip
+          // /.content-slider__inform
+        // /.content-slider__info
+        +e.btn
+          +b.A.btn(href='#')
+            | book 
+            +b.SPAN.btn-click flight
+        // /.content-slider__btn
+      // /.content-slider__item
+      +e.item
+        +e.img(style='background-image: url(../src/assets/images/travel/slider/travel-bg-8.png);')
+          +e.headtitle
+            +b.info-subtitle
+              +b.subtitle-line_left shore
+              +e.description
+                | airlie beach  
+                +b.SPAN |
+                |  australia
+            // /.info-subtitle
+          // /.content-slider__headtitle
+        // /.content-slider__img
+        +e.maintitle(style='background-image: url(../src/assets/images/travel/slider/plane-slide-8.png);')
+          +b.info-title
+            +b.subtitle-line_right airline
+            +e.description
+              | klm airlines 
+              +b.img(src='../assets/images/travel/slider/avia-logo-8.svg', alt='')
+          // /.info-title
+        // /.content-slider__maintitle
+        +e.info
+          +e.inform
+            +e.inform-subtitle destination
+            +e.inform-title
+              | queensland 
+              +b.BR
+              | australia
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle distance
+            +e.inform-title 7,065 miles
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle travel time
+            +e.inform-title
+              | 23 hours
+              +b.BR
+              |  5 minutes
+          // /.content-slider__inform
+          +e.inform
+            +e.inform-subtitle  pricing
+            +e.inform-title
+              | $1,976
+              +b.SMALL round trip
+          // /.content-slider__inform
+        // /.content-slider__info
+        +e.btn
+          +b.A.btn(href='#')
+            | book 
+            +b.SPAN.btn-click flight
+        // /.content-slider__btn
+      // /.content-slider__item
+    // /.content-slider
+  // /.container
+// /.travel

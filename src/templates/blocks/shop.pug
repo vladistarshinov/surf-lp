@@ -1,0 +1,296 @@
+include ../common/bem-mixin.pug
+
++b.SECTION.shop#goods
+    +b.block-name.wow.fadeInLeft(data-wow-offset='400')
+      +b.SPAN
+        +b.SPAN shop
+        +b.H3 shop
+    // /.shop-title
+    +b.shop-slider
+      +e.item
+        +e.info
+          +b.shop-slider__inform.wow.slideInLeft(data-wow-offset='200', data-wow-delay='.2s')
+            +b.shop-info
+              +b.subtitle-line_right style
+              +b.info-title__description north nugget tt surfboard
+            // /.shop-info
+            +b.shop-price
+              +b.UL.shop__star-list.star-list
+                +b.LI.wow.fadeInLeft(data-wow-offset = '100', data-wow-delay='2.1s')
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI.wow.fadeInLeft(data-wow-offset = '100', data-wow-delay='2.2s')
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI.wow.fadeInLeft(data-wow-offset = '100', data-wow-delay='2.3s')
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI.wow.fadeInLeft(data-wow-offset = '100', data-wow-delay='2.4s')
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI.wow.fadeInLeft(data-wow-offset = '100', data-wow-delay='2.5s')
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+              +b.SPAN
+                | $799
+                +b.SUP 99
+            // /.shop-price
+            +e.btn
+              +b.A.btn
+                | drop 
+                +b.SPAN.btn-click.shop-btn in
+            // /.shop-slider__btn
+          // /.shop-slider__inform
+          +e.product
+            +b.surfboard.wow.fadeInUp(data-wow-offset='200')
+              +b.IMG(src='../assets/images/shop/slider/surfboard-slide-1.png', alt='')
+              +b.surf-box--1.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | double concave with vee shape low point
+              // /.surfboard-info
+              +b.surf-box--2.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | a soft rail is wrapped in water
+              // /.surfboard-info
+              +b.surf-box--3.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | improve mobility &amp; make turns heavy
+              // /.surfboard-info
+            // /.surfboard
+            +b.wow.slideInRight(data-wow-offset='200', data-wow-delay='.4s').extras__
+              +e.head Extras
+              +b.extras-blocks
+                +b.extras-block
+                  +e.logo
+                    +b.IMG(src='../assets/images/shop/slider/wax-logo.png', alt='')
+                  +e.title sex wax
+                  +e.price $24.99
+                // /.extras-block
+                +b.extras-block
+                  +e.logo
+                    +b.IMG(src='../assets/images/shop/slider/pura-logo.png', alt='')
+                  +e.title pura vida
+                  +e.price $27.99
+                // /.extras-block
+              // /.extras-blocks
+          // /.shop-slider__product
+        // /.shop-slider__info
+      // /.shop-slider__item
+      +e.item
+        +e.info
+          +e.inform
+            +b.shop-info
+              +b.subtitle-line_right style
+              +b.info-title__description south coast surfboard
+            // /.shop-info
+            +b.shop-price
+              +b.UL.shop__star-list.star-list
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+              +b.SPAN
+                | $569
+                +b.SUP 99
+            // /.shop-price
+            +b.shop-slider__btn
+              +b.A.btn
+                | drop 
+                +b.SPAN.btn-click.shop-btn in
+            // /.shop-slider__btn
+          // /.shop-slider__inform
+          +e.product
+            +b.surfboard
+              +b.IMG(src='../assets/images/shop/slider/surfboard-slide-2.png', alt='')
+              +b.surf-box--1.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | the ability to swim in any body of water
+              // /.surfboard-info
+              +b.surf-box--2.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | often used by photographers, fishers, lifeguards
+              // /.surfboard-info
+              +b.surf-box--3.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | have a good water resistance
+              // /.surfboard-info
+            // /.surfboard
+            +b.extras
+              +e.head Extras
+              +b.extras-blocks
+                +b.extras-block
+                  +e.logo
+                    +b.IMG(src='../assets/images/shop/slider/leashg-logo.png', alt='')
+                  +e.title leash wax
+                  +e.price $21.99
+                // /.extras-block
+                +b.extras-block
+                  +e.logo
+                    +b.IMG(src='../assets/images/shop/slider/fin-logo.png', alt='')
+                  +e.title fin fastlight
+                  +e.price $32.99
+                // /.extras-block
+              // /.extras-blocks
+          // /.shop-slider__product
+        // /.shop-slider__info
+      // /.shop-slider__item
+      +e.item
+        +e.info
+          +e.inform
+            +b.shop-info
+              +b.subtitle-line_right style
+              +b.info-title__description west pill head surfboard
+            // /.shop-info
+            +b.shop-price
+              +b.UL.shop__star-list.star-list
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+              +b.SPAN
+                | $699
+                +b.SUP 99
+            // /.shop-price
+            +b.shop-slider__btn
+              +b.A.btn
+                | drop 
+                +b.SPAN.btn-click.shop-btn in
+            // /.shop-slider__btn
+          // /.shop-slider__inform
+          +e.product
+            +b.surfboard
+              +b.IMG(src='../assets/images/shop/slider/surfboard-slide-3.png', alt='')
+              +b.surf-box--1.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | good stability on almost any wave
+              // /.surfboard-info
+              +b.surf-box--2.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | differs in a rigid design and shows big mobility
+              // /.surfboard-info
+              +b.surf-box--3.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | allows to comfortably go out to the middle waves
+              // /.surfboard-info
+            // /.surfboard
+            +b.extras
+              +e.head Extras
+              +b.extras-blocks
+                +b.extras-block
+                  +e.logo
+                    +b.IMG(src='../assets/images/shop/slider/leashb-logo.png', alt='')
+                  +e.title leash wax
+                  +e.price $21.99
+                // /.extras-block
+                +b.extras-block
+                  +e.logo
+                    +b.IMG(src='../assets/images/shop/slider/stomppad-logo.png', alt='')
+                  +e.title stomp pad
+                  +e.price $37.99
+                // /.extras-block
+              // /.extras-blocks
+          // /.shop-slider__product
+        // /.shop-slider__info
+      // /.shop-slider__item
+      +e.item
+        +e.info
+          +e.inform
+            +b.shop-info
+              +b.subtitle-line_right style
+              +b.info-title__description surftech ch islands
+            // /.shop-info
+            +b.shop-price
+              +b.UL.shop__star-list.star-list
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+                +b.LI
+                  +b.IMG(src='../assets/images/sleep/slider/star.svg', alt='')
+              +b.SPAN
+                | $759
+                +b.SUP 99
+            // /.shop-price
+            +b.shop-slider__btn
+              +b.A.btn
+                | drop 
+                +b.SPAN.btn-click.shop-btn in
+            // /.shop-slider__btn
+          // /.shop-slider__inform
+          +e.product
+            +b.surfboard
+              +b.IMG(src='../assets/images/shop/slider/surfboard-slide-4.png', alt='')
+              +b.surf-box--1.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | helps to master professional tricks
+              // /.surfboard-info
+              +b.surf-box--2.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | suitable for small waves
+              // /.surfboard-info
+              +b.surf-box--3.surfboard-info__
+                +e.dots
+                  +b.dot-1
+                  +b.dot-2
+                +e.content
+                  | forked tail for good acceleration &amp; mobility
+              // /.surfboard-info
+            // /.surfboard
+            +b.extras
+              +e.head Extras
+              +b.extras-blocks
+                +b.extras-block
+                  +e.logo
+                    +b.IMG(src='../assets/images/shop/slider/finlight-logo.png', alt='')
+                  +e.title 3Dfin fastlight
+                  +e.price $34.99
+                // /.extras-block
+                +b.extras-block
+                  +e.logo
+                    +b.IMG(src='../assets/images/shop/slider/bag-logo.png', alt='')
+                  +e.title surf bag
+                  +e.price $18.99
+                // /.extras-block
+              // /.extras-blocks
+          // /.shop-slider__product
+        // /.shop-slider__info
+      // /.shop-slider__item
+      
